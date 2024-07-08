@@ -1,5 +1,8 @@
 ﻿namespace Base
 {
+    /// <summary>
+    /// Задача.
+    /// </summary>
     public class Tasks
     {
         private int id {  get; set; }
