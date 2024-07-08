@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Base;
 
 namespace Infrastructure
 {
     public interface IDataProvider
     {
-        void saveData();
-        void loadData();
+        void saveData(List<Tasks> taskList);
+        void loadData(List<Tasks> taskList);
     }
 }

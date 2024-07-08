@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
+using Base;
 
 namespace Infrastructure
 {
@@ -11,16 +13,19 @@ namespace Infrastructure
         string path = Directory.GetCurrentDirectory()
                 + @"\..\..\..\..\Domain\Data\test.txt";
 
-        public void loadData()
+        public void loadData(List<Tasks> taskList)
         {
             using (StreamReader stream = new StreamReader(path))
                 stream.ReadLine();
         }
-
-        public void saveData()
+        public void saveData(List<Tasks> taskList)
         {
             using (StreamWriter stream = new StreamWriter(path, true))
-                stream.WriteLine("Ok");
+            {
+                foreach (var task in taskList) {
+                    stream.WriteLine(task.ToString());
+                }
+            }
         }
     }
 }

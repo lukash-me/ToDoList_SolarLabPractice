@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace UserInterface
@@ -15,7 +16,6 @@ namespace UserInterface
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new HelloWindow());
-
         }
     }
 }
