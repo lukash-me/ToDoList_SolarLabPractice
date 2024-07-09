@@ -11,20 +11,18 @@ namespace Infrastructure
     public class DataProvider : IDataProvider
     {
         string path = Directory.GetCurrentDirectory()
-                + @"\..\..\..\..\Domain\Data\test.txt";
-
-        public void loadData(List<Tasks> taskList)
+                + @"\..\..\..\..\..\..\Domain\Data\.tempStorage.txt";
+        public void loadData(Tasks taskList)
         {
             using (StreamReader stream = new StreamReader(path))
                 stream.ReadLine();
+            // прописать правильное чтение из файла
         }
-        public void saveData(List<Tasks> taskList)
+        public void saveData(Tasks task)
         {
             using (StreamWriter stream = new StreamWriter(path, true))
             {
-                foreach (var task in taskList) {
-                    stream.WriteLine(task.ToString());
-                }
+                stream.WriteLine($"{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}");
             }
         }
     }

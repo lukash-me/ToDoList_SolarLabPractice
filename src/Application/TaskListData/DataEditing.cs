@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Base;
+using Infrastructure;
+
 
 namespace TaskListData
 {
-    internal class DataEditing
+    public class DataEditing
     {
+        public void toTasks(string name, string tag, string priority, string duration, DateTime deadline)
+        {
+            Tasks task = new Tasks();
+            task.name = name;
+            task.tag = tag;
+            task.priority = priority;
+            task.duration = Convert.ToDouble(duration);
+            task.deadline = deadline;
+
+            DataProvider provider = new DataProvider();
+            provider.saveData(task);
+        }
     }
 }
