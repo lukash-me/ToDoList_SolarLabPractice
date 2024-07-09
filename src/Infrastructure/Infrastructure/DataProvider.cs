@@ -12,11 +12,10 @@ namespace Infrastructure
     {
         string path = Directory.GetCurrentDirectory()
                 + @"\..\..\..\..\..\..\Domain\Data\.tempStorage.txt";
-        public void loadData(Tasks taskList)
+        public string loadData()
         {
             using (StreamReader stream = new StreamReader(path))
-                stream.ReadLine();
-            // прописать правильное чтение из файла
+                return stream.ReadLine();
         }
         public void saveData(Tasks task)
         {
