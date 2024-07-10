@@ -57,5 +57,11 @@ namespace UserInterface
             de.statusChanging(list, actualIdcomboBox.Text, 1);
             tasksListRefresh();
         }
+
+        private void completeTaskButton_Click(object sender, EventArgs e)
+        {
+            de.statusChanging(list, actualIdcomboBox.Text, 2);
+            tasksListRefresh();
+        }
     }
 }

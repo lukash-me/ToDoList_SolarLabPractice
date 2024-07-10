@@ -1,5 +1,6 @@
 ﻿using Base;
 using Infrastructure;
+using System.Threading.Tasks;
 
 
 namespace TaskListData
@@ -69,6 +70,14 @@ namespace TaskListData
                     }
                     break;
                 case 2:
+                    foreach (Tasks task in list)
+                    {
+                        if (task.id == Convert.ToInt32(id))
+                        {
+                            task.status = "Выполнено";
+                            return;
+                        }
+                    }
                     break;
             }
             

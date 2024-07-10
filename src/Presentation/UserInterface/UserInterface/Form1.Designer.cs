@@ -48,11 +48,11 @@
             label1 = new Label();
             taskMinsComboBox = new ComboBox();
             taskHoursComboBox = new ComboBox();
-            completeTaskButtun = new Button();
             startTaskButton = new Button();
             editTaskButton = new Button();
             deleteTaskButton = new Button();
             actualIdcomboBox = new ComboBox();
+            completeTaskButton = new Button();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -213,16 +213,6 @@
             taskHoursComboBox.Size = new Size(38, 23);
             taskHoursComboBox.TabIndex = 12;
             // 
-            // completeTaskButtun
-            // 
-            completeTaskButtun.Location = new Point(194, 144);
-            completeTaskButtun.Name = "completeTaskButtun";
-            completeTaskButtun.Size = new Size(108, 52);
-            completeTaskButtun.TabIndex = 0;
-            completeTaskButtun.Text = "Пометить выполненной";
-            completeTaskButtun.UseVisualStyleBackColor = true;
-            completeTaskButtun.Click += addTaskButton_Click;
-            // 
             // startTaskButton
             // 
             startTaskButton.Location = new Point(91, 144);
@@ -257,16 +247,27 @@
             // 
             actualIdcomboBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             actualIdcomboBox.FormattingEnabled = true;
-            actualIdcomboBox.Location = new Point(29, 152);
+            actualIdcomboBox.Location = new Point(9, 152);
             actualIdcomboBox.Name = "actualIdcomboBox";
-            actualIdcomboBox.Size = new Size(38, 33);
+            actualIdcomboBox.Size = new Size(58, 33);
             actualIdcomboBox.TabIndex = 12;
+            // 
+            // completeTaskButton
+            // 
+            completeTaskButton.Location = new Point(194, 144);
+            completeTaskButton.Name = "completeTaskButton";
+            completeTaskButton.Size = new Size(108, 52);
+            completeTaskButton.TabIndex = 14;
+            completeTaskButton.Text = "Пометить выполненной";
+            completeTaskButton.UseVisualStyleBackColor = true;
+            completeTaskButton.Click += completeTaskButton_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(completeTaskButton);
             Controls.Add(startTaskButton);
             Controls.Add(actualIdcomboBox);
             Controls.Add(taskHoursComboBox);
@@ -283,7 +284,6 @@
             Controls.Add(button2);
             Controls.Add(deleteTaskButton);
             Controls.Add(editTaskButton);
-            Controls.Add(completeTaskButtun);
             Controls.Add(addTaskButton);
             Name = "Form1";
             Text = "ToDo";
@@ -314,10 +314,10 @@
         private Label label1;
         private ComboBox taskMinsComboBox;
         private ComboBox taskHoursComboBox;
-        private Button completeTaskButtun;
         private Button startTaskButton;
         private Button editTaskButton;
         private Button deleteTaskButton;
         private ComboBox actualIdcomboBox;
+        private Button completeTaskButton;
     }
 }
