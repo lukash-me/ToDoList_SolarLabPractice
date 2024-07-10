@@ -49,10 +49,12 @@
             taskMinsComboBox = new ComboBox();
             taskHoursComboBox = new ComboBox();
             startTaskButton = new Button();
-            editTaskButton = new Button();
             deleteTaskButton = new Button();
             actualIdcomboBox = new ComboBox();
             completeTaskButton = new Button();
+            fontDialog1 = new FontDialog();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            editTaskButton = new Button();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -90,6 +92,7 @@
             taskNameTextBox.Name = "taskNameTextBox";
             taskNameTextBox.Size = new Size(100, 23);
             taskNameTextBox.TabIndex = 3;
+            taskNameTextBox.Text = "fnhjgfjh";
             // 
             // taskTagTextBox
             // 
@@ -223,16 +226,6 @@
             startTaskButton.UseVisualStyleBackColor = true;
             startTaskButton.Click += startTaskButton_Click;
             // 
-            // editTaskButton
-            // 
-            editTaskButton.Location = new Point(308, 144);
-            editTaskButton.Name = "editTaskButton";
-            editTaskButton.Size = new Size(108, 52);
-            editTaskButton.TabIndex = 0;
-            editTaskButton.Text = "Редактировать";
-            editTaskButton.UseVisualStyleBackColor = true;
-            editTaskButton.Click += addTaskButton_Click;
-            // 
             // deleteTaskButton
             // 
             deleteTaskButton.Location = new Point(422, 144);
@@ -262,11 +255,22 @@
             completeTaskButton.UseVisualStyleBackColor = true;
             completeTaskButton.Click += completeTaskButton_Click;
             // 
+            // editTaskButton
+            // 
+            editTaskButton.Location = new Point(308, 144);
+            editTaskButton.Name = "editTaskButton";
+            editTaskButton.Size = new Size(108, 52);
+            editTaskButton.TabIndex = 15;
+            editTaskButton.Text = "Редактировать";
+            editTaskButton.UseVisualStyleBackColor = true;
+            editTaskButton.Click += editTaskButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(editTaskButton);
             Controls.Add(completeTaskButton);
             Controls.Add(startTaskButton);
             Controls.Add(actualIdcomboBox);
@@ -283,7 +287,6 @@
             Controls.Add(TaskPriorityComboBox);
             Controls.Add(button2);
             Controls.Add(deleteTaskButton);
-            Controls.Add(editTaskButton);
             Controls.Add(addTaskButton);
             Name = "Form1";
             Text = "ToDo";
@@ -315,9 +318,11 @@
         private ComboBox taskMinsComboBox;
         private ComboBox taskHoursComboBox;
         private Button startTaskButton;
-        private Button editTaskButton;
         private Button deleteTaskButton;
         private ComboBox actualIdcomboBox;
         private Button completeTaskButton;
+        private FontDialog fontDialog1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button editTaskButton;
     }
 }

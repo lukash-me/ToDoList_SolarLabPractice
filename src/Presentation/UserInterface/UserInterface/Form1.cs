@@ -54,14 +54,26 @@ namespace UserInterface
 
         private void startTaskButton_Click(object sender, EventArgs e)
         {
-            de.statusChanging(list, actualIdcomboBox.Text, 1);
+            de.statusChanging(list, Convert.ToInt32(actualIdcomboBox.Text), 1);
             tasksListRefresh();
         }
 
         private void completeTaskButton_Click(object sender, EventArgs e)
         {
-            de.statusChanging(list, actualIdcomboBox.Text, 2);
+            de.statusChanging(list, Convert.ToInt32(actualIdcomboBox.Text), 2);
             tasksListRefresh();
+        }
+
+        private void editTaskButton_Click(object sender, EventArgs e)
+        {
+            string id = actualIdcomboBox.Text;
+
+            TaskEditingForm taskEditingForm = new TaskEditingForm();
+
+            string[] texts = de.taskToString(de.searchTask(list, Convert.ToInt32(actualIdcomboBox.Text)));
+
+            taskEditingForm.setTexts(texts[0], texts[1], texts[2], texts[3], texts[5], texts[6].Split(" ")[0], texts[6].Split(" ")[1].Split(":")[0], texts[6].Split(" ")[1].Split(":")[1]);
+            taskEditingForm.Show();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Base;
 using Infrastructure;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
@@ -53,36 +54,30 @@ namespace TaskListData
             return str.Split(",");
         }
 
-        public void statusChanging(List<Tasks> list, string id, int changing)
+        public void statusChanging(List<Tasks> list, int id, int changing)
         {
             switch (changing)
             {
                 case 0:
                     break;
                 case 1:
-                    foreach (Tasks task in list)
-                    {
-                        if (task.id == Convert.ToInt32(id))
-                        {
-                            task.status = "В работе";
-                            return;
-                        }
-                    }
+                    searchTask(list, id).status = "В работе";
                     break;
                 case 2:
-                    foreach (Tasks task in list)
-                    {
-                        if (task.id == Convert.ToInt32(id))
-                        {
-                            task.status = "Выполнено";
-                            return;
-                        }
-                    }
+                    searchTask(list, id).status = "Выполнено";
                     break;
             }
-            
-
-            
+        }
+        public Tasks searchTask(List<Tasks> list, int id)
+        {
+            foreach (Tasks task in list)
+            {
+                if (task.id == Convert.ToInt32(id))
+                {
+                    return task;
+                }
+            }
+            return null;
         }
     }
 }
