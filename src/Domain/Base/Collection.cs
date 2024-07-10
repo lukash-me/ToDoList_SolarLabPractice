@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Base
 {
-    public class TasksCollection
+    public class TasksCollection : List<object>
     {
         public List<Tasks> list;
 

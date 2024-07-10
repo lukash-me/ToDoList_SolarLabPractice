@@ -35,8 +35,16 @@
             taskTagTextBox = new TextBox();
             taskDurationTextBox = new TextBox();
             taskDeadlineDateBox = new DateTimePicker();
-            TasksListBox = new ListBox();
             RefreshButton = new Button();
+            TasksListView = new ListView();
+            nameTasksListView = new ColumnHeader();
+            tagTasksListView = new ColumnHeader();
+            priorityTasksListView = new ColumnHeader();
+            statusTasksListView = new ColumnHeader();
+            durationTasksListView = new ColumnHeader();
+            deadlineTasksListView = new ColumnHeader();
+            taskIdTextBox = new TextBox();
+            idTasksListView = new ColumnHeader();
             SuspendLayout();
             // 
             // button1
@@ -62,28 +70,28 @@
             // 
             TaskPriorityComboBox.FormattingEnabled = true;
             TaskPriorityComboBox.Items.AddRange(new object[] { "Низкий", "Средний", "Высокий", "Срочно" });
-            TaskPriorityComboBox.Location = new Point(308, 55);
+            TaskPriorityComboBox.Location = new Point(355, 55);
             TaskPriorityComboBox.Name = "TaskPriorityComboBox";
             TaskPriorityComboBox.Size = new Size(121, 23);
             TaskPriorityComboBox.TabIndex = 2;
             // 
             // taskNameTextBox
             // 
-            taskNameTextBox.Location = new Point(55, 55);
+            taskNameTextBox.Location = new Point(143, 55);
             taskNameTextBox.Name = "taskNameTextBox";
             taskNameTextBox.Size = new Size(100, 23);
             taskNameTextBox.TabIndex = 3;
             // 
             // taskTagTextBox
             // 
-            taskTagTextBox.Location = new Point(183, 55);
+            taskTagTextBox.Location = new Point(249, 55);
             taskTagTextBox.Name = "taskTagTextBox";
             taskTagTextBox.Size = new Size(100, 23);
             taskTagTextBox.TabIndex = 4;
             // 
             // taskDurationTextBox
             // 
-            taskDurationTextBox.Location = new Point(459, 55);
+            taskDurationTextBox.Location = new Point(482, 55);
             taskDurationTextBox.Name = "taskDurationTextBox";
             taskDurationTextBox.Size = new Size(100, 23);
             taskDurationTextBox.TabIndex = 5;
@@ -95,15 +103,6 @@
             taskDeadlineDateBox.Size = new Size(200, 23);
             taskDeadlineDateBox.TabIndex = 6;
             // 
-            // TasksListBox
-            // 
-            TasksListBox.FormattingEnabled = true;
-            TasksListBox.ItemHeight = 15;
-            TasksListBox.Location = new Point(12, 271);
-            TasksListBox.Name = "TasksListBox";
-            TasksListBox.Size = new Size(776, 154);
-            TasksListBox.TabIndex = 7;
-            // 
             // RefreshButton
             // 
             RefreshButton.Location = new Point(12, 232);
@@ -114,16 +113,75 @@
             RefreshButton.UseVisualStyleBackColor = true;
             RefreshButton.Click += RefreshButton_Click;
             // 
+            // TasksListView
+            // 
+            TasksListView.Columns.AddRange(new ColumnHeader[] { idTasksListView, nameTasksListView, tagTasksListView, priorityTasksListView, statusTasksListView, durationTasksListView, deadlineTasksListView });
+            TasksListView.Location = new Point(12, 261);
+            TasksListView.Name = "TasksListView";
+            TasksListView.Size = new Size(758, 177);
+            TasksListView.TabIndex = 9;
+            TasksListView.UseCompatibleStateImageBehavior = false;
+            TasksListView.View = View.Details;
+            // 
+            // nameTasksListView
+            // 
+            nameTasksListView.Text = "Название";
+            nameTasksListView.TextAlign = HorizontalAlignment.Center;
+            nameTasksListView.Width = 180;
+            // 
+            // tagTasksListView
+            // 
+            tagTasksListView.Tag = "";
+            tagTasksListView.Text = "Тег";
+            tagTasksListView.TextAlign = HorizontalAlignment.Center;
+            tagTasksListView.Width = 130;
+            // 
+            // priorityTasksListView
+            // 
+            priorityTasksListView.Text = "Приоритет";
+            priorityTasksListView.TextAlign = HorizontalAlignment.Center;
+            priorityTasksListView.Width = 100;
+            // 
+            // statusTasksListView
+            // 
+            statusTasksListView.Text = "Статус";
+            statusTasksListView.TextAlign = HorizontalAlignment.Center;
+            statusTasksListView.Width = 80;
+            // 
+            // durationTasksListView
+            // 
+            durationTasksListView.Text = "Длительность";
+            durationTasksListView.TextAlign = HorizontalAlignment.Center;
+            durationTasksListView.Width = 100;
+            // 
+            // deadlineTasksListView
+            // 
+            deadlineTasksListView.Text = "Дедлайн";
+            deadlineTasksListView.TextAlign = HorizontalAlignment.Center;
+            deadlineTasksListView.Width = 120;
+            // 
+            // taskIdTextBox
+            // 
+            taskIdTextBox.Location = new Point(37, 55);
+            taskIdTextBox.Name = "taskIdTextBox";
+            taskIdTextBox.Size = new Size(100, 23);
+            taskIdTextBox.TabIndex = 3;
+            // 
+            // idTasksListView
+            // 
+            idTasksListView.Text = "Номер";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(TasksListView);
             Controls.Add(RefreshButton);
-            Controls.Add(TasksListBox);
             Controls.Add(taskDeadlineDateBox);
             Controls.Add(taskDurationTextBox);
             Controls.Add(taskTagTextBox);
+            Controls.Add(taskIdTextBox);
             Controls.Add(taskNameTextBox);
             Controls.Add(TaskPriorityComboBox);
             Controls.Add(button2);
@@ -143,7 +201,15 @@
         private TextBox taskTagTextBox;
         private TextBox taskDurationTextBox;
         private DateTimePicker taskDeadlineDateBox;
-        private ListBox TasksListBox;
         private Button RefreshButton;
+        private ListView TasksListView;
+        private ColumnHeader nameTasksListView;
+        private ColumnHeader tagTasksListView;
+        private ColumnHeader priorityTasksListView;
+        private ColumnHeader statusTasksListView;
+        private ColumnHeader durationTasksListView;
+        private ColumnHeader deadlineTasksListView;
+        private TextBox taskIdTextBox;
+        private ColumnHeader idTasksListView;
     }
 }

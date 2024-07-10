@@ -6,9 +6,10 @@ namespace TaskListData
 {
     public class DataEditing
     {
-        public Tasks toTasks(string name, string tag, string priority, string duration, DateTime deadline)
+        public Tasks toTasks(string id, string name, string tag, string priority, string duration, DateTime deadline)
         {
             Tasks task = new Tasks();
+            task.id = Convert.ToInt32(id);
             task.name = name;
             task.tag = tag;
             task.priority = priority;
@@ -36,9 +37,16 @@ namespace TaskListData
             return task;
         }
 
-        public void addToTasksList(List<Tasks> list, string name, string tag, string priority, string duration, DateTime deadline)
+        public void addToTasksList(List<Tasks> list, string id, string name, string tag, string priority, string duration, DateTime deadline)
         {
-            list.Add(toTasks(name, tag, priority, duration, deadline));
+            list.Add(toTasks(id, name, tag, priority, duration, deadline));
+        }
+
+        public string[] taskToString(Tasks task)
+        {
+            string str = $"{task.id},{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}";
+
+            return str.Split(",");
         }
     }
 }
