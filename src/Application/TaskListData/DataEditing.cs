@@ -13,8 +13,9 @@ namespace TaskListData
             task.name = name;
             task.tag = tag;
             task.priority = priority;
+            task.status = "Не начата";
             task.duration = Convert.ToDouble(duration);
-            task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00");
+            task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00"); //если mins, hours = null?
 
             return task;
         }
@@ -49,6 +50,30 @@ namespace TaskListData
             string str = $"{task.id},{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}";
 
             return str.Split(",");
+        }
+
+        public void statusChanging(List<Tasks> list, string id, int changing)
+        {
+            switch (changing)
+            {
+                case 0:
+                    break;
+                case 1:
+                    foreach (Tasks task in list)
+                    {
+                        if (task.id == Convert.ToInt32(id))
+                        {
+                            task.status = "В работе";
+                            return;
+                        }
+                    }
+                    break;
+                case 2:
+                    break;
+            }
+            
+
+            
         }
     }
 }

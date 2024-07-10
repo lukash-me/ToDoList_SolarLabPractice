@@ -7,14 +7,14 @@ namespace UserInterface
     public partial class Form1 : Form
     {
         List<Tasks> list = new List<Tasks>();
-        
+
         DataEditing de = new DataEditing();
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addTaskButton_Click(object sender, EventArgs e)
         {
             de.addToTasksList(list, taskIdUpDown.Value,
                         taskNameTextBox.Text,
@@ -24,6 +24,7 @@ namespace UserInterface
                         taskDeadlineDateBox.Value.ToShortDateString(),
                         taskHoursComboBox.Text,
                         taskMinsComboBox.Text);
+            actualIdcomboBox.Items.Add(taskIdUpDown.Value);
             tasksListRefresh();
         }
 
@@ -49,6 +50,12 @@ namespace UserInterface
         {
             //TasksListView.Items.Clear();
             //tasksListRefresh();
+        }
+
+        private void startTaskButton_Click(object sender, EventArgs e)
+        {
+            de.statusChanging(list, actualIdcomboBox.Text, 1);
+            tasksListRefresh();
         }
     }
 }

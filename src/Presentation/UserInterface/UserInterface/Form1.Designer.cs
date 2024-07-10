@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            addTaskButton = new Button();
             button2 = new Button();
             TaskPriorityComboBox = new ComboBox();
             taskNameTextBox = new TextBox();
@@ -48,22 +48,27 @@
             label1 = new Label();
             taskMinsComboBox = new ComboBox();
             taskHoursComboBox = new ComboBox();
+            completeTaskButtun = new Button();
+            startTaskButton = new Button();
+            editTaskButton = new Button();
+            deleteTaskButton = new Button();
+            actualIdcomboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // addTaskButton
             // 
-            button1.Location = new Point(205, 117);
-            button1.Name = "button1";
-            button1.Size = new Size(354, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Добавить задачу";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            addTaskButton.Location = new Point(205, 82);
+            addTaskButton.Name = "addTaskButton";
+            addTaskButton.Size = new Size(354, 23);
+            addTaskButton.TabIndex = 0;
+            addTaskButton.Text = "Добавить задачу";
+            addTaskButton.UseVisualStyleBackColor = true;
+            addTaskButton.Click += addTaskButton_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(205, 165);
+            button2.Location = new Point(202, 232);
             button2.Name = "button2";
             button2.Size = new Size(354, 23);
             button2.TabIndex = 1;
@@ -125,9 +130,10 @@
             // TasksListView
             // 
             TasksListView.Columns.AddRange(new ColumnHeader[] { idTasksListView, nameTasksListView, tagTasksListView, priorityTasksListView, statusTasksListView, durationTasksListView, deadlineTasksListView });
+            TasksListView.GridLines = true;
             TasksListView.Location = new Point(12, 261);
             TasksListView.Name = "TasksListView";
-            TasksListView.Size = new Size(758, 177);
+            TasksListView.Size = new Size(776, 177);
             TasksListView.TabIndex = 9;
             TasksListView.UseCompatibleStateImageBehavior = false;
             TasksListView.View = View.Details;
@@ -183,7 +189,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(27, 153);
+            label1.Location = new Point(12, 117);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 11;
@@ -207,11 +213,62 @@
             taskHoursComboBox.Size = new Size(38, 23);
             taskHoursComboBox.TabIndex = 12;
             // 
+            // completeTaskButtun
+            // 
+            completeTaskButtun.Location = new Point(194, 144);
+            completeTaskButtun.Name = "completeTaskButtun";
+            completeTaskButtun.Size = new Size(108, 52);
+            completeTaskButtun.TabIndex = 0;
+            completeTaskButtun.Text = "Пометить выполненной";
+            completeTaskButtun.UseVisualStyleBackColor = true;
+            completeTaskButtun.Click += addTaskButton_Click;
+            // 
+            // startTaskButton
+            // 
+            startTaskButton.Location = new Point(91, 144);
+            startTaskButton.Name = "startTaskButton";
+            startTaskButton.Size = new Size(97, 52);
+            startTaskButton.TabIndex = 13;
+            startTaskButton.Text = "Приступить к выполнению";
+            startTaskButton.UseVisualStyleBackColor = true;
+            startTaskButton.Click += startTaskButton_Click;
+            // 
+            // editTaskButton
+            // 
+            editTaskButton.Location = new Point(308, 144);
+            editTaskButton.Name = "editTaskButton";
+            editTaskButton.Size = new Size(108, 52);
+            editTaskButton.TabIndex = 0;
+            editTaskButton.Text = "Редактировать";
+            editTaskButton.UseVisualStyleBackColor = true;
+            editTaskButton.Click += addTaskButton_Click;
+            // 
+            // deleteTaskButton
+            // 
+            deleteTaskButton.Location = new Point(422, 144);
+            deleteTaskButton.Name = "deleteTaskButton";
+            deleteTaskButton.Size = new Size(108, 52);
+            deleteTaskButton.TabIndex = 0;
+            deleteTaskButton.Text = "Удалить";
+            deleteTaskButton.UseVisualStyleBackColor = true;
+            deleteTaskButton.Click += addTaskButton_Click;
+            // 
+            // actualIdcomboBox
+            // 
+            actualIdcomboBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            actualIdcomboBox.FormattingEnabled = true;
+            actualIdcomboBox.Location = new Point(29, 152);
+            actualIdcomboBox.Name = "actualIdcomboBox";
+            actualIdcomboBox.Size = new Size(38, 33);
+            actualIdcomboBox.TabIndex = 12;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(startTaskButton);
+            Controls.Add(actualIdcomboBox);
             Controls.Add(taskHoursComboBox);
             Controls.Add(taskMinsComboBox);
             Controls.Add(label1);
@@ -224,7 +281,10 @@
             Controls.Add(taskNameTextBox);
             Controls.Add(TaskPriorityComboBox);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(deleteTaskButton);
+            Controls.Add(editTaskButton);
+            Controls.Add(completeTaskButtun);
+            Controls.Add(addTaskButton);
             Name = "Form1";
             Text = "ToDo";
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).EndInit();
@@ -234,7 +294,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button addTaskButton;
         private Button button2;
         private ComboBox TaskPriorityComboBox;
         private TextBox taskNameTextBox;
@@ -254,5 +314,10 @@
         private Label label1;
         private ComboBox taskMinsComboBox;
         private ComboBox taskHoursComboBox;
+        private Button completeTaskButtun;
+        private Button startTaskButton;
+        private Button editTaskButton;
+        private Button deleteTaskButton;
+        private ComboBox actualIdcomboBox;
     }
 }
