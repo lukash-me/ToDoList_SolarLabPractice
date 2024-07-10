@@ -29,20 +29,18 @@ namespace UserInterface
         {
             TasksListView.Items.Clear();
 
-            Tasks task = list.ElementAt(0);
+            foreach (Tasks task in list)
+            {
+                string[] str = de.taskToString(task);
+                ListViewItem item = new ListViewItem(str[0]);
 
-            string[] str = de.taskToString(task);
+                for (int i = 1; i < 7; i++)
+                {
+                    item.SubItems.Add(str[i]);
+                }
 
-            ListViewItem item = new ListViewItem(str[0]);
-
-            item.SubItems.Add(str[1]);
-            item.SubItems.Add(str[2]);
-            item.SubItems.Add(str[3]);
-            item.SubItems.Add(str[4]);
-            item.SubItems.Add(str[5]);
-            item.SubItems.Add(str[6]);
-
-            TasksListView.Items.Add(item);
+                TasksListView.Items.Add(item);
+            }
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
