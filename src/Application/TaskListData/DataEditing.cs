@@ -47,6 +47,16 @@ namespace TaskListData
             list.Add(toTasks(id, name, tag, priority, duration, deadline, hours, mins));
         }
 
+        public void editTask(Tasks task, string id, string name, string tag, string priority, string duration, string deadline, string hours, string mins)
+        {
+            task.id = Convert.ToInt32(id);
+            task.name = name;
+            task.tag = tag;
+            task.priority = priority;
+            task.duration = Convert.ToDouble(duration);
+            task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00"); //если mins, hours = null?
+        }
+
         public string[] taskToString(Tasks task)
         {
             string str = $"{task.id},{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}";

@@ -30,15 +30,14 @@
         {
             taskEditHoursComboBox = new ComboBox();
             taskEditMinsComboBox = new ComboBox();
-            taskEditIdUpDown = new NumericUpDown();
             taskEditDeadlineDateBox = new DateTimePicker();
             taskEditDurationTextBox = new TextBox();
             taskEditTagTextBox = new TextBox();
             taskEditNameTextBox = new TextBox();
             taskEditPriorityComboBox = new ComboBox();
-            editTaskButton = new Button();
+            saveTaskButton = new Button();
             cancelButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)taskEditIdUpDown).BeginInit();
+            taskEditIdTextBox = new TextBox();
             SuspendLayout();
             // 
             // taskEditHoursComboBox
@@ -58,13 +57,6 @@
             taskEditMinsComboBox.Name = "taskEditMinsComboBox";
             taskEditMinsComboBox.Size = new Size(38, 23);
             taskEditMinsComboBox.TabIndex = 21;
-            // 
-            // taskEditIdUpDown
-            // 
-            taskEditIdUpDown.Location = new Point(4, 63);
-            taskEditIdUpDown.Name = "taskEditIdUpDown";
-            taskEditIdUpDown.Size = new Size(67, 23);
-            taskEditIdUpDown.TabIndex = 19;
             // 
             // taskEditDeadlineDateBox
             // 
@@ -108,15 +100,15 @@
             taskEditPriorityComboBox.Size = new Size(121, 23);
             taskEditPriorityComboBox.TabIndex = 14;
             // 
-            // editTaskButton
+            // saveTaskButton
             // 
-            editTaskButton.Location = new Point(200, 92);
-            editTaskButton.Name = "editTaskButton";
-            editTaskButton.Size = new Size(354, 23);
-            editTaskButton.TabIndex = 13;
-            editTaskButton.Text = "Сохранить изменения";
-            editTaskButton.UseVisualStyleBackColor = true;
-            editTaskButton.Click += editTaskButton_Click;
+            saveTaskButton.Location = new Point(200, 92);
+            saveTaskButton.Name = "saveTaskButton";
+            saveTaskButton.Size = new Size(354, 23);
+            saveTaskButton.TabIndex = 13;
+            saveTaskButton.Text = "Сохранить изменения";
+            saveTaskButton.UseVisualStyleBackColor = true;
+            saveTaskButton.Click += saveTaskButton_Click;
             // 
             // cancelButton
             // 
@@ -127,24 +119,30 @@
             cancelButton.Text = "Отменить";
             cancelButton.UseVisualStyleBackColor = true;
             // 
+            // taskEditIdTextBox
+            // 
+            taskEditIdTextBox.Location = new Point(12, 62);
+            taskEditIdTextBox.Name = "taskEditIdTextBox";
+            taskEditIdTextBox.Size = new Size(67, 23);
+            taskEditIdTextBox.TabIndex = 23;
+            // 
             // TaskEditingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(750, 225);
+            Controls.Add(taskEditIdTextBox);
             Controls.Add(taskEditHoursComboBox);
             Controls.Add(taskEditMinsComboBox);
-            Controls.Add(taskEditIdUpDown);
             Controls.Add(taskEditDeadlineDateBox);
             Controls.Add(taskEditDurationTextBox);
             Controls.Add(taskEditTagTextBox);
             Controls.Add(taskEditNameTextBox);
             Controls.Add(taskEditPriorityComboBox);
             Controls.Add(cancelButton);
-            Controls.Add(editTaskButton);
+            Controls.Add(saveTaskButton);
             Name = "TaskEditingForm";
             Text = "TaskEditingForm";
-            ((System.ComponentModel.ISupportInitialize)taskEditIdUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -153,13 +151,13 @@
 
         private ComboBox taskEditHoursComboBox;
         private ComboBox taskEditMinsComboBox;
-        private NumericUpDown taskEditIdUpDown;
         private DateTimePicker taskEditDeadlineDateBox;
         private TextBox taskEditDurationTextBox;
         private TextBox taskEditTagTextBox;
         private TextBox taskEditNameTextBox;
         private ComboBox taskEditPriorityComboBox;
-        private Button editTaskButton;
+        private Button saveTaskButton;
         private Button cancelButton;
+        private TextBox taskEditIdTextBox;
     }
 }
