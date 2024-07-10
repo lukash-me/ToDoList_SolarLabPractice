@@ -16,7 +16,7 @@ namespace UserInterface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            de.addToTasksList(list, taskIdTextBox.Text,
+            de.addToTasksList(list, taskIdUpDown.Text,
                         taskNameTextBox.Text,
                         taskTagTextBox.Text,
                         TaskPriorityComboBox.Text,

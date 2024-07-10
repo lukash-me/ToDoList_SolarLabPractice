@@ -37,14 +37,15 @@
             taskDeadlineDateBox = new DateTimePicker();
             RefreshButton = new Button();
             TasksListView = new ListView();
+            idTasksListView = new ColumnHeader();
             nameTasksListView = new ColumnHeader();
             tagTasksListView = new ColumnHeader();
             priorityTasksListView = new ColumnHeader();
             statusTasksListView = new ColumnHeader();
             durationTasksListView = new ColumnHeader();
             deadlineTasksListView = new ColumnHeader();
-            taskIdTextBox = new TextBox();
-            idTasksListView = new ColumnHeader();
+            taskIdUpDown = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -123,6 +124,10 @@
             TasksListView.UseCompatibleStateImageBehavior = false;
             TasksListView.View = View.Details;
             // 
+            // idTasksListView
+            // 
+            idTasksListView.Text = "Номер";
+            // 
             // nameTasksListView
             // 
             nameTasksListView.Text = "Название";
@@ -160,34 +165,31 @@
             deadlineTasksListView.TextAlign = HorizontalAlignment.Center;
             deadlineTasksListView.Width = 120;
             // 
-            // taskIdTextBox
+            // taskIdUpDown
             // 
-            taskIdTextBox.Location = new Point(37, 55);
-            taskIdTextBox.Name = "taskIdTextBox";
-            taskIdTextBox.Size = new Size(100, 23);
-            taskIdTextBox.TabIndex = 3;
-            // 
-            // idTasksListView
-            // 
-            idTasksListView.Text = "Номер";
+            taskIdUpDown.Location = new Point(56, 55);
+            taskIdUpDown.Name = "taskIdUpDown";
+            taskIdUpDown.Size = new Size(67, 23);
+            taskIdUpDown.TabIndex = 10;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(taskIdUpDown);
             Controls.Add(TasksListView);
             Controls.Add(RefreshButton);
             Controls.Add(taskDeadlineDateBox);
             Controls.Add(taskDurationTextBox);
             Controls.Add(taskTagTextBox);
-            Controls.Add(taskIdTextBox);
             Controls.Add(taskNameTextBox);
             Controls.Add(TaskPriorityComboBox);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "Form1";
             Text = "ToDo";
+            ((System.ComponentModel.ISupportInitialize)taskIdUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -209,7 +211,7 @@
         private ColumnHeader statusTasksListView;
         private ColumnHeader durationTasksListView;
         private ColumnHeader deadlineTasksListView;
-        private TextBox taskIdTextBox;
         private ColumnHeader idTasksListView;
+        private NumericUpDown taskIdUpDown;
     }
 }
