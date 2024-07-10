@@ -16,12 +16,14 @@ namespace UserInterface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            de.addToTasksList(list, taskIdUpDown.Text,
+            de.addToTasksList(list, taskIdUpDown.Value,
                         taskNameTextBox.Text,
                         taskTagTextBox.Text,
                         TaskPriorityComboBox.Text,
                         taskDurationTextBox.Text,
-                        taskDeadlineDateBox.Value);
+                        taskDeadlineDateBox.Value.ToShortDateString(),
+                        taskHoursComboBox.Text,
+                        taskMinsComboBox.Text);
             tasksListRefresh();
         }
 
@@ -45,8 +47,8 @@ namespace UserInterface
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            TasksListView.Items.Clear();
-            tasksListRefresh();
+            //TasksListView.Items.Clear();
+            //tasksListRefresh();
         }
     }
 }

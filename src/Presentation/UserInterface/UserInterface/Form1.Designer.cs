@@ -45,6 +45,9 @@
             durationTasksListView = new ColumnHeader();
             deadlineTasksListView = new ColumnHeader();
             taskIdUpDown = new NumericUpDown();
+            label1 = new Label();
+            taskMinsComboBox = new ComboBox();
+            taskHoursComboBox = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -71,38 +74,43 @@
             // 
             TaskPriorityComboBox.FormattingEnabled = true;
             TaskPriorityComboBox.Items.AddRange(new object[] { "Низкий", "Средний", "Высокий", "Срочно" });
-            TaskPriorityComboBox.Location = new Point(355, 55);
+            TaskPriorityComboBox.Location = new Point(308, 53);
             TaskPriorityComboBox.Name = "TaskPriorityComboBox";
             TaskPriorityComboBox.Size = new Size(121, 23);
             TaskPriorityComboBox.TabIndex = 2;
             // 
             // taskNameTextBox
             // 
-            taskNameTextBox.Location = new Point(143, 55);
+            taskNameTextBox.Location = new Point(96, 53);
             taskNameTextBox.Name = "taskNameTextBox";
             taskNameTextBox.Size = new Size(100, 23);
             taskNameTextBox.TabIndex = 3;
             // 
             // taskTagTextBox
             // 
-            taskTagTextBox.Location = new Point(249, 55);
+            taskTagTextBox.Location = new Point(202, 53);
             taskTagTextBox.Name = "taskTagTextBox";
             taskTagTextBox.Size = new Size(100, 23);
             taskTagTextBox.TabIndex = 4;
             // 
             // taskDurationTextBox
             // 
-            taskDurationTextBox.Location = new Point(482, 55);
+            taskDurationTextBox.Location = new Point(435, 53);
             taskDurationTextBox.Name = "taskDurationTextBox";
             taskDurationTextBox.Size = new Size(100, 23);
             taskDurationTextBox.TabIndex = 5;
             // 
             // taskDeadlineDateBox
             // 
-            taskDeadlineDateBox.Location = new Point(588, 55);
+            taskDeadlineDateBox.CustomFormat = "";
+            taskDeadlineDateBox.Format = DateTimePickerFormat.Short;
+            taskDeadlineDateBox.Location = new Point(550, 53);
+            taskDeadlineDateBox.MinDate = new DateTime(2024, 7, 10, 0, 0, 0, 0);
             taskDeadlineDateBox.Name = "taskDeadlineDateBox";
-            taskDeadlineDateBox.Size = new Size(200, 23);
+            taskDeadlineDateBox.Size = new Size(89, 23);
             taskDeadlineDateBox.TabIndex = 6;
+            taskDeadlineDateBox.TabStop = false;
+            taskDeadlineDateBox.Value = new DateTime(2024, 7, 10, 0, 0, 0, 0);
             // 
             // RefreshButton
             // 
@@ -167,16 +175,46 @@
             // 
             // taskIdUpDown
             // 
-            taskIdUpDown.Location = new Point(56, 55);
+            taskIdUpDown.Location = new Point(9, 53);
             taskIdUpDown.Name = "taskIdUpDown";
             taskIdUpDown.Size = new Size(67, 23);
             taskIdUpDown.TabIndex = 10;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(27, 153);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 11;
+            label1.Text = "label1";
+            // 
+            // taskMinsComboBox
+            // 
+            taskMinsComboBox.FormattingEnabled = true;
+            taskMinsComboBox.Items.AddRange(new object[] { "1", "2", "4", "5", "6", "7", "8", "9", "10" });
+            taskMinsComboBox.Location = new Point(702, 52);
+            taskMinsComboBox.Name = "taskMinsComboBox";
+            taskMinsComboBox.Size = new Size(38, 23);
+            taskMinsComboBox.TabIndex = 12;
+            // 
+            // taskHoursComboBox
+            // 
+            taskHoursComboBox.FormattingEnabled = true;
+            taskHoursComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" });
+            taskHoursComboBox.Location = new Point(658, 52);
+            taskHoursComboBox.Name = "taskHoursComboBox";
+            taskHoursComboBox.Size = new Size(38, 23);
+            taskHoursComboBox.TabIndex = 12;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(taskHoursComboBox);
+            Controls.Add(taskMinsComboBox);
+            Controls.Add(label1);
             Controls.Add(taskIdUpDown);
             Controls.Add(TasksListView);
             Controls.Add(RefreshButton);
@@ -213,5 +251,8 @@
         private ColumnHeader deadlineTasksListView;
         private ColumnHeader idTasksListView;
         private NumericUpDown taskIdUpDown;
+        private Label label1;
+        private ComboBox taskMinsComboBox;
+        private ComboBox taskHoursComboBox;
     }
 }
