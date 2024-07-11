@@ -10,19 +10,40 @@ namespace Infrastructure
     /// </summary>
     public class DataProvider : IDataProvider
     {
-        string path = Directory.GetCurrentDirectory()
-                + @"\..\..\..\..\..\..\Domain\Data\.tempStorage.txt";
+        private bool userPath = false;
+        private string path = Directory.GetCurrentDirectory()
+                + @"\..\..\..\..\..\..\Domain\Data\ToDoList.txt";
+
+        public string Path
+        {
+            get { return path; }
+            set { path = value; userPath = true; }
+        }
+
         public string loadData()
         {
             using (StreamReader stream = new StreamReader(path))
                 return stream.ReadLine();
         }
-        public void saveData(Tasks task)
+        public void saveData(List<string> strList)
         {
-            using (StreamWriter stream = new StreamWriter(path, true))
+            if(userPath == false)
             {
-                stream.WriteLine($"{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}");
+                int i = 1;
+                while (File.Exists(path))
+                {
+                    Path = Directory.GetCurrentDirectory()
+                    + $@"\..\..\..\..\..\..\Domain\Data\ToDoList_{i}.txt";
+                    i++;
+                }
             }
+            
+            using (StreamWriter stream = new StreamWriter(path))
+            {
+                foreach(string str in strList)
+                    stream.WriteLine(str);
+            }
+            userPath = true;
         }
     }
 }

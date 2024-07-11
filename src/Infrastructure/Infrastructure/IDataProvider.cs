@@ -4,7 +4,7 @@ namespace Infrastructure
 {
     public interface IDataProvider
     {
-        void saveData(Tasks task);
+        void saveData(List<string> strList);
         string loadData();
     }
 }

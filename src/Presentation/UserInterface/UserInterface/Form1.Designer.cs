@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             addTaskButton = new Button();
-            button2 = new Button();
+            saveButton = new Button();
             TaskPriorityComboBox = new ComboBox();
             taskNameTextBox = new TextBox();
             taskTagTextBox = new TextBox();
             taskDurationTextBox = new TextBox();
             taskDeadlineDateBox = new DateTimePicker();
-            RefreshButton = new Button();
             TasksListView = new ListView();
             idTasksListView = new ColumnHeader();
             nameTasksListView = new ColumnHeader();
@@ -45,25 +44,25 @@
             durationTasksListView = new ColumnHeader();
             deadlineTasksListView = new ColumnHeader();
             taskIdUpDown = new NumericUpDown();
-            label1 = new Label();
             taskMinsComboBox = new ComboBox();
             taskHoursComboBox = new ComboBox();
             startTaskButton = new Button();
             actualIdcomboBox = new ComboBox();
             completeTaskButton = new Button();
-            fontDialog1 = new FontDialog();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             editTaskButton = new Button();
             deleteTaskButton = new Button();
             idToEdit = new Label();
             filterComboBox = new ComboBox();
             filterButton = new Button();
+            saveAsButton = new Button();
+            label1 = new Label();
+            openFileDialog1 = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
             // addTaskButton
             // 
-            addTaskButton.Location = new Point(205, 82);
+            addTaskButton.Location = new Point(208, 102);
             addTaskButton.Name = "addTaskButton";
             addTaskButton.Size = new Size(354, 23);
             addTaskButton.TabIndex = 0;
@@ -71,41 +70,42 @@
             addTaskButton.UseVisualStyleBackColor = true;
             addTaskButton.Click += addTaskButton_Click;
             // 
-            // button2
+            // saveButton
             // 
-            button2.Location = new Point(127, 232);
-            button2.Name = "button2";
-            button2.Size = new Size(354, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Сохранить список";
-            button2.UseVisualStyleBackColor = true;
+            saveButton.Location = new Point(9, 3);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(132, 23);
+            saveButton.TabIndex = 1;
+            saveButton.Text = "Сохранить список";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // TaskPriorityComboBox
             // 
             TaskPriorityComboBox.FormattingEnabled = true;
             TaskPriorityComboBox.Items.AddRange(new object[] { "Низкий", "Средний", "Высокий", "Срочно" });
-            TaskPriorityComboBox.Location = new Point(308, 53);
+            TaskPriorityComboBox.Location = new Point(311, 73);
             TaskPriorityComboBox.Name = "TaskPriorityComboBox";
             TaskPriorityComboBox.Size = new Size(121, 23);
             TaskPriorityComboBox.TabIndex = 2;
             // 
             // taskNameTextBox
             // 
-            taskNameTextBox.Location = new Point(96, 53);
+            taskNameTextBox.Location = new Point(99, 73);
             taskNameTextBox.Name = "taskNameTextBox";
             taskNameTextBox.Size = new Size(100, 23);
             taskNameTextBox.TabIndex = 3;
             // 
             // taskTagTextBox
             // 
-            taskTagTextBox.Location = new Point(202, 53);
+            taskTagTextBox.Location = new Point(205, 73);
             taskTagTextBox.Name = "taskTagTextBox";
             taskTagTextBox.Size = new Size(100, 23);
             taskTagTextBox.TabIndex = 4;
             // 
             // taskDurationTextBox
             // 
-            taskDurationTextBox.Location = new Point(435, 53);
+            taskDurationTextBox.Location = new Point(438, 73);
             taskDurationTextBox.Name = "taskDurationTextBox";
             taskDurationTextBox.Size = new Size(100, 23);
             taskDurationTextBox.TabIndex = 5;
@@ -114,23 +114,13 @@
             // 
             taskDeadlineDateBox.CustomFormat = "";
             taskDeadlineDateBox.Format = DateTimePickerFormat.Short;
-            taskDeadlineDateBox.Location = new Point(550, 53);
+            taskDeadlineDateBox.Location = new Point(553, 73);
             taskDeadlineDateBox.MinDate = new DateTime(2024, 7, 10, 0, 0, 0, 0);
             taskDeadlineDateBox.Name = "taskDeadlineDateBox";
             taskDeadlineDateBox.Size = new Size(89, 23);
             taskDeadlineDateBox.TabIndex = 6;
             taskDeadlineDateBox.TabStop = false;
             taskDeadlineDateBox.Value = new DateTime(2024, 7, 10, 0, 0, 0, 0);
-            // 
-            // RefreshButton
-            // 
-            RefreshButton.Location = new Point(12, 232);
-            RefreshButton.Name = "RefreshButton";
-            RefreshButton.Size = new Size(75, 23);
-            RefreshButton.TabIndex = 8;
-            RefreshButton.Text = "Обновить";
-            RefreshButton.UseVisualStyleBackColor = true;
-            RefreshButton.Click += RefreshButton_Click;
             // 
             // TasksListView
             // 
@@ -186,25 +176,16 @@
             // 
             // taskIdUpDown
             // 
-            taskIdUpDown.Location = new Point(9, 53);
+            taskIdUpDown.Location = new Point(12, 73);
             taskIdUpDown.Name = "taskIdUpDown";
             taskIdUpDown.Size = new Size(67, 23);
             taskIdUpDown.TabIndex = 10;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(671, 129);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 11;
-            label1.Text = "label1";
             // 
             // taskMinsComboBox
             // 
             taskMinsComboBox.FormattingEnabled = true;
             taskMinsComboBox.Items.AddRange(new object[] { "1", "2", "4", "5", "6", "7", "8", "9", "10" });
-            taskMinsComboBox.Location = new Point(702, 52);
+            taskMinsComboBox.Location = new Point(705, 72);
             taskMinsComboBox.Name = "taskMinsComboBox";
             taskMinsComboBox.Size = new Size(38, 23);
             taskMinsComboBox.TabIndex = 12;
@@ -213,14 +194,14 @@
             // 
             taskHoursComboBox.FormattingEnabled = true;
             taskHoursComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" });
-            taskHoursComboBox.Location = new Point(658, 52);
+            taskHoursComboBox.Location = new Point(661, 72);
             taskHoursComboBox.Name = "taskHoursComboBox";
             taskHoursComboBox.Size = new Size(38, 23);
             taskHoursComboBox.TabIndex = 12;
             // 
             // startTaskButton
             // 
-            startTaskButton.Location = new Point(127, 144);
+            startTaskButton.Location = new Point(127, 167);
             startTaskButton.Name = "startTaskButton";
             startTaskButton.Size = new Size(97, 52);
             startTaskButton.TabIndex = 13;
@@ -233,14 +214,14 @@
             actualIdcomboBox.FlatStyle = FlatStyle.Flat;
             actualIdcomboBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             actualIdcomboBox.FormattingEnabled = true;
-            actualIdcomboBox.Location = new Point(12, 152);
+            actualIdcomboBox.Location = new Point(12, 175);
             actualIdcomboBox.Name = "actualIdcomboBox";
             actualIdcomboBox.Size = new Size(98, 33);
             actualIdcomboBox.TabIndex = 12;
             // 
             // completeTaskButton
             // 
-            completeTaskButton.Location = new Point(230, 144);
+            completeTaskButton.Location = new Point(230, 167);
             completeTaskButton.Name = "completeTaskButton";
             completeTaskButton.Size = new Size(108, 52);
             completeTaskButton.TabIndex = 14;
@@ -250,7 +231,7 @@
             // 
             // editTaskButton
             // 
-            editTaskButton.Location = new Point(344, 144);
+            editTaskButton.Location = new Point(344, 167);
             editTaskButton.Name = "editTaskButton";
             editTaskButton.Size = new Size(108, 52);
             editTaskButton.TabIndex = 15;
@@ -260,7 +241,7 @@
             // 
             // deleteTaskButton
             // 
-            deleteTaskButton.Location = new Point(458, 144);
+            deleteTaskButton.Location = new Point(458, 167);
             deleteTaskButton.Name = "deleteTaskButton";
             deleteTaskButton.Size = new Size(101, 52);
             deleteTaskButton.TabIndex = 16;
@@ -272,7 +253,7 @@
             // 
             idToEdit.AutoSize = true;
             idToEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            idToEdit.Location = new Point(9, 123);
+            idToEdit.Location = new Point(9, 146);
             idToEdit.Name = "idToEdit";
             idToEdit.Size = new Size(58, 21);
             idToEdit.TabIndex = 17;
@@ -282,9 +263,9 @@
             // 
             filterComboBox.FormattingEnabled = true;
             filterComboBox.Items.AddRange(new object[] { "Все", "Выполненные", "В работе", "В ожидании" });
-            filterComboBox.Location = new Point(561, 232);
+            filterComboBox.Location = new Point(595, 232);
             filterComboBox.Name = "filterComboBox";
-            filterComboBox.Size = new Size(121, 23);
+            filterComboBox.Size = new Size(87, 23);
             filterComboBox.TabIndex = 18;
             filterComboBox.Text = "Все";
             // 
@@ -298,11 +279,38 @@
             filterButton.UseVisualStyleBackColor = true;
             filterButton.Click += filterButton_Click;
             // 
+            // saveAsButton
+            // 
+            saveAsButton.Location = new Point(147, 3);
+            saveAsButton.Name = "saveAsButton";
+            saveAsButton.Size = new Size(152, 23);
+            saveAsButton.TabIndex = 20;
+            saveAsButton.Text = "Сохранить список как...";
+            saveAsButton.UseVisualStyleBackColor = true;
+            saveAsButton.Click += saveAsButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(256, 136);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 21;
+            label1.Text = "label1";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.CheckFileExists = false;
+            openFileDialog1.CheckPathExists = false;
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(saveAsButton);
             Controls.Add(filterButton);
             Controls.Add(filterComboBox);
             Controls.Add(idToEdit);
@@ -313,16 +321,14 @@
             Controls.Add(actualIdcomboBox);
             Controls.Add(taskHoursComboBox);
             Controls.Add(taskMinsComboBox);
-            Controls.Add(label1);
             Controls.Add(taskIdUpDown);
             Controls.Add(TasksListView);
-            Controls.Add(RefreshButton);
             Controls.Add(taskDeadlineDateBox);
             Controls.Add(taskDurationTextBox);
             Controls.Add(taskTagTextBox);
             Controls.Add(taskNameTextBox);
             Controls.Add(TaskPriorityComboBox);
-            Controls.Add(button2);
+            Controls.Add(saveButton);
             Controls.Add(addTaskButton);
             Name = "Form1";
             Text = "ToDo";
@@ -334,13 +340,12 @@
         #endregion
 
         private Button addTaskButton;
-        private Button button2;
+        private Button saveButton;
         private ComboBox TaskPriorityComboBox;
         private TextBox taskNameTextBox;
         private TextBox taskTagTextBox;
         private TextBox taskDurationTextBox;
         private DateTimePicker taskDeadlineDateBox;
-        private Button RefreshButton;
         private ListView TasksListView;
         private ColumnHeader nameTasksListView;
         private ColumnHeader tagTasksListView;
@@ -350,18 +355,18 @@
         private ColumnHeader deadlineTasksListView;
         private ColumnHeader idTasksListView;
         private NumericUpDown taskIdUpDown;
-        private Label label1;
         private ComboBox taskMinsComboBox;
         private ComboBox taskHoursComboBox;
         private Button startTaskButton;
         private ComboBox actualIdcomboBox;
         private Button completeTaskButton;
-        private FontDialog fontDialog1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button editTaskButton;
         private Button deleteTaskButton;
         private Label idToEdit;
         private ComboBox filterComboBox;
         private Button filterButton;
+        private Button saveAsButton;
+        private Label label1;
+        private OpenFileDialog openFileDialog1;
     }
 }

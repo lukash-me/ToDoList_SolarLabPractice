@@ -43,6 +43,14 @@ namespace TaskListData
             return str.Split(",");
         }
 
+        public static List<string> tasksListToString(List<Tasks> list, List<string> strList)
+        {
+            foreach (Tasks task in list)
+                strList.Add($"{task.id},{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}");
+            
+            return strList;
+        }
+
         public static Tasks searchTask(List<Tasks> list, int id)
         {
             foreach (Tasks task in list)

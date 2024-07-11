@@ -1,4 +1,6 @@
 using Base;
+using Infrastructure;
+using System.Windows.Forms;
 using TaskListData;
 
 namespace UserInterface
@@ -7,6 +9,8 @@ namespace UserInterface
     {
         List<Tasks> list = new List<Tasks>();
         DataEditing de = new DataEditing();
+        DataProvider provider = new DataProvider();
+
         bool userAlert = false;
         int[] userAlertArr = [10]; //0 - idAdd, 1 - nameAdd, 2 - tagAdd, 3 - durationAdd, 4 - hoursAdd, 5 - minAdd, 6 - idEdit, 7 - startEdit, 8 - doneEdit, 9 - editEdit 10 - deleteEdit
         public Form1()
@@ -43,12 +47,6 @@ namespace UserInterface
                 }
                 TasksListView.Items.Add(item);
             }
-        }
-
-        private void RefreshButton_Click(object sender, EventArgs e)
-        {
-            TasksListView.Items.Clear();
-            listPresentation(filterComboBox.Text);
         }
 
         private void startTaskButton_Click(object sender, EventArgs e)
@@ -98,6 +96,29 @@ namespace UserInterface
         private void filterButton_Click(object sender, EventArgs e)
         {
             listPresentation(filterComboBox.Text);
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            List<string> tasksListStr = new List<string>();
+            DataProcessing.tasksListToString(list, tasksListStr);
+            provider.saveData(tasksListStr);
+        }
+
+        private void saveAsButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog1 = new OpenFileDialog();
+            label1.Text = Directory.GetCurrentDirectory();
+            openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory()
+                + @"\..\..\..\..\..\..\Domain\Data\test.txt";
+            openFileDialog1.CheckFileExists = false;
+            openFileDialog1.ShowDialog();
+
+            provider.Path = openFileDialog1.FileName.Split(".")[0] + ".txt";
+
+            List<string> tasksListStr = new List<string>();
+            DataProcessing.tasksListToString(list, tasksListStr);
+            provider.saveData(tasksListStr);
         }
     }
 }
