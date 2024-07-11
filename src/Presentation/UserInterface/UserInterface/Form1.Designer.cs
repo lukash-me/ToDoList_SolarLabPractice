@@ -55,6 +55,9 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             editTaskButton = new Button();
             deleteTaskButton = new Button();
+            idToEdit = new Label();
+            filterComboBox = new ComboBox();
+            filterButton = new Button();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -70,7 +73,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(202, 232);
+            button2.Location = new Point(127, 232);
             button2.Name = "button2";
             button2.Size = new Size(354, 23);
             button2.TabIndex = 1;
@@ -191,7 +194,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 117);
+            label1.Location = new Point(671, 129);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 11;
@@ -217,7 +220,7 @@
             // 
             // startTaskButton
             // 
-            startTaskButton.Location = new Point(91, 144);
+            startTaskButton.Location = new Point(127, 144);
             startTaskButton.Name = "startTaskButton";
             startTaskButton.Size = new Size(97, 52);
             startTaskButton.TabIndex = 13;
@@ -227,16 +230,17 @@
             // 
             // actualIdcomboBox
             // 
+            actualIdcomboBox.FlatStyle = FlatStyle.Flat;
             actualIdcomboBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             actualIdcomboBox.FormattingEnabled = true;
-            actualIdcomboBox.Location = new Point(9, 152);
+            actualIdcomboBox.Location = new Point(12, 152);
             actualIdcomboBox.Name = "actualIdcomboBox";
-            actualIdcomboBox.Size = new Size(58, 33);
+            actualIdcomboBox.Size = new Size(98, 33);
             actualIdcomboBox.TabIndex = 12;
             // 
             // completeTaskButton
             // 
-            completeTaskButton.Location = new Point(194, 144);
+            completeTaskButton.Location = new Point(230, 144);
             completeTaskButton.Name = "completeTaskButton";
             completeTaskButton.Size = new Size(108, 52);
             completeTaskButton.TabIndex = 14;
@@ -246,7 +250,7 @@
             // 
             // editTaskButton
             // 
-            editTaskButton.Location = new Point(308, 144);
+            editTaskButton.Location = new Point(344, 144);
             editTaskButton.Name = "editTaskButton";
             editTaskButton.Size = new Size(108, 52);
             editTaskButton.TabIndex = 15;
@@ -256,7 +260,7 @@
             // 
             // deleteTaskButton
             // 
-            deleteTaskButton.Location = new Point(422, 144);
+            deleteTaskButton.Location = new Point(458, 144);
             deleteTaskButton.Name = "deleteTaskButton";
             deleteTaskButton.Size = new Size(101, 52);
             deleteTaskButton.TabIndex = 16;
@@ -264,11 +268,44 @@
             deleteTaskButton.UseVisualStyleBackColor = true;
             deleteTaskButton.Click += deleteTaskButton_Click;
             // 
+            // idToEdit
+            // 
+            idToEdit.AutoSize = true;
+            idToEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            idToEdit.Location = new Point(9, 123);
+            idToEdit.Name = "idToEdit";
+            idToEdit.Size = new Size(58, 21);
+            idToEdit.TabIndex = 17;
+            idToEdit.Text = "Номер";
+            // 
+            // filterComboBox
+            // 
+            filterComboBox.FormattingEnabled = true;
+            filterComboBox.Items.AddRange(new object[] { "Все", "Выполненные", "В работе", "В ожидании" });
+            filterComboBox.Location = new Point(561, 232);
+            filterComboBox.Name = "filterComboBox";
+            filterComboBox.Size = new Size(121, 23);
+            filterComboBox.TabIndex = 18;
+            filterComboBox.Text = "Все";
+            // 
+            // filterButton
+            // 
+            filterButton.Location = new Point(688, 232);
+            filterButton.Name = "filterButton";
+            filterButton.Size = new Size(100, 23);
+            filterButton.TabIndex = 19;
+            filterButton.Text = "Применить";
+            filterButton.UseVisualStyleBackColor = true;
+            filterButton.Click += filterButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(filterButton);
+            Controls.Add(filterComboBox);
+            Controls.Add(idToEdit);
             Controls.Add(deleteTaskButton);
             Controls.Add(editTaskButton);
             Controls.Add(completeTaskButton);
@@ -323,5 +360,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button editTaskButton;
         private Button deleteTaskButton;
+        private Label idToEdit;
+        private ComboBox filterComboBox;
+        private Button filterButton;
     }
 }

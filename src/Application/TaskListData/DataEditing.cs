@@ -15,7 +15,7 @@ namespace TaskListData
             task.name = name;
             task.tag = tag;
             task.priority = priority;
-            task.status = "Не начата";
+            task.status = "В ожидании";
             task.duration = Convert.ToDouble(duration);
             task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00"); //если mins, hours = null?
 
@@ -62,12 +62,7 @@ namespace TaskListData
             task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00"); //если mins, hours = null?
         }
 
-        public string[] taskToString(Tasks task)
-        {
-            string str = $"{task.id},{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}";
-
-            return str.Split(",");
-        }
+        
 
         public void statusChanging(List<Tasks> list, int id, int changing)
         {
