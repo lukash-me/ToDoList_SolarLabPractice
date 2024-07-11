@@ -73,5 +73,13 @@ namespace UserInterface
             taskEditingForm.ShowDialog();
             tasksListRefresh();
         }
+
+        private void deleteTaskButton_Click(object sender, EventArgs e)
+        {
+            de.deleteFromTaskList(list, Convert.ToInt32(actualIdcomboBox.Text));
+            actualIdcomboBox.Items.Remove(Convert.ToDecimal(actualIdcomboBox.Text));
+            actualIdcomboBox.Text = string.Empty;
+            tasksListRefresh();
+        }
     }
 }

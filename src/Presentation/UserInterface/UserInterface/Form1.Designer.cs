@@ -49,12 +49,12 @@
             taskMinsComboBox = new ComboBox();
             taskHoursComboBox = new ComboBox();
             startTaskButton = new Button();
-            deleteTaskButton = new Button();
             actualIdcomboBox = new ComboBox();
             completeTaskButton = new Button();
             fontDialog1 = new FontDialog();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             editTaskButton = new Button();
+            deleteTaskButton = new Button();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -92,7 +92,6 @@
             taskNameTextBox.Name = "taskNameTextBox";
             taskNameTextBox.Size = new Size(100, 23);
             taskNameTextBox.TabIndex = 3;
-            taskNameTextBox.Text = "fnhjgfjh";
             // 
             // taskTagTextBox
             // 
@@ -226,16 +225,6 @@
             startTaskButton.UseVisualStyleBackColor = true;
             startTaskButton.Click += startTaskButton_Click;
             // 
-            // deleteTaskButton
-            // 
-            deleteTaskButton.Location = new Point(422, 144);
-            deleteTaskButton.Name = "deleteTaskButton";
-            deleteTaskButton.Size = new Size(108, 52);
-            deleteTaskButton.TabIndex = 0;
-            deleteTaskButton.Text = "Удалить";
-            deleteTaskButton.UseVisualStyleBackColor = true;
-            deleteTaskButton.Click += addTaskButton_Click;
-            // 
             // actualIdcomboBox
             // 
             actualIdcomboBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -265,11 +254,22 @@
             editTaskButton.UseVisualStyleBackColor = true;
             editTaskButton.Click += editTaskButton_Click;
             // 
+            // deleteTaskButton
+            // 
+            deleteTaskButton.Location = new Point(422, 144);
+            deleteTaskButton.Name = "deleteTaskButton";
+            deleteTaskButton.Size = new Size(101, 52);
+            deleteTaskButton.TabIndex = 16;
+            deleteTaskButton.Text = "Удалить";
+            deleteTaskButton.UseVisualStyleBackColor = true;
+            deleteTaskButton.Click += deleteTaskButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(deleteTaskButton);
             Controls.Add(editTaskButton);
             Controls.Add(completeTaskButton);
             Controls.Add(startTaskButton);
@@ -286,7 +286,6 @@
             Controls.Add(taskNameTextBox);
             Controls.Add(TaskPriorityComboBox);
             Controls.Add(button2);
-            Controls.Add(deleteTaskButton);
             Controls.Add(addTaskButton);
             Name = "Form1";
             Text = "ToDo";
@@ -318,11 +317,11 @@
         private ComboBox taskMinsComboBox;
         private ComboBox taskHoursComboBox;
         private Button startTaskButton;
-        private Button deleteTaskButton;
         private ComboBox actualIdcomboBox;
         private Button completeTaskButton;
         private FontDialog fontDialog1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button editTaskButton;
+        private Button deleteTaskButton;
     }
 }

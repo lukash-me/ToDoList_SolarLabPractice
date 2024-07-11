@@ -118,6 +118,7 @@
             cancelButton.TabIndex = 13;
             cancelButton.Text = "Отменить";
             cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
             // taskEditIdTextBox
             // 

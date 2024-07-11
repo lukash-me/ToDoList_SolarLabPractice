@@ -47,6 +47,11 @@ namespace TaskListData
             list.Add(toTasks(id, name, tag, priority, duration, deadline, hours, mins));
         }
 
+        public void deleteFromTaskList(List<Tasks> list, int id)
+        {
+            list.Remove(searchTask(list, id));
+        }
+
         public void editTask(Tasks task, string id, string name, string tag, string priority, string duration, string deadline, string hours, string mins)
         {
             task.id = Convert.ToInt32(id);
@@ -89,5 +94,7 @@ namespace TaskListData
             }
             return null;
         }
+
+        
     }
 }
