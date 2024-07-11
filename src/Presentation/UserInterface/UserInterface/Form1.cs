@@ -108,9 +108,8 @@ namespace UserInterface
         private void saveAsButton_Click(object sender, EventArgs e)
         {
             openFileDialog1 = new OpenFileDialog();
-            label1.Text = Directory.GetCurrentDirectory();
             openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory()
-                + @"\..\..\..\..\..\..\Domain\Data\test.txt";
+                + @"\..\..\..\..\..\..\Domain\Data";
             openFileDialog1.CheckFileExists = false;
             openFileDialog1.ShowDialog();
 
@@ -119,6 +118,21 @@ namespace UserInterface
             List<string> tasksListStr = new List<string>();
             DataProcessing.tasksListToString(list, tasksListStr);
             provider.saveData(tasksListStr);
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory()
+                + @"\..\..\..\..\..\..\Domain\Data";
+            openFileDialog1.ShowDialog();
+            provider.Path = openFileDialog1.FileName;
+
+            List<string> tasksListStr = provider.loadData();
+            list = de.toTasks(tasksListStr);
+
+            filterComboBox.Text = "Все";
+            listPresentation(filterComboBox.Text);
         }
     }
 }

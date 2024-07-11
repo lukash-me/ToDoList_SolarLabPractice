@@ -20,11 +20,20 @@ namespace Infrastructure
             set { path = value; userPath = true; }
         }
 
-        public string loadData()
+        public List<string> loadData()
         {
+            List<string> strList = new List<string>();
             using (StreamReader stream = new StreamReader(path))
-                return stream.ReadLine();
+            {
+                while (!stream.EndOfStream)
+                {
+                    strList.Add(stream.ReadLine());
+                }
+            }
+            return strList;
         }
+
+
         public void saveData(List<string> strList)
         {
             if(userPath == false)

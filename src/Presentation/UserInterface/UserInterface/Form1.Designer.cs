@@ -57,6 +57,7 @@
             saveAsButton = new Button();
             label1 = new Label();
             openFileDialog1 = new OpenFileDialog();
+            loadButton = new Button();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
@@ -74,9 +75,9 @@
             // 
             saveButton.Location = new Point(9, 3);
             saveButton.Name = "saveButton";
-            saveButton.Size = new Size(132, 23);
+            saveButton.Size = new Size(101, 23);
             saveButton.TabIndex = 1;
-            saveButton.Text = "Сохранить список";
+            saveButton.Text = "Сохранить";
             saveButton.UseVisualStyleBackColor = true;
             saveButton.Click += saveButton_Click;
             // 
@@ -281,11 +282,11 @@
             // 
             // saveAsButton
             // 
-            saveAsButton.Location = new Point(147, 3);
+            saveAsButton.Location = new Point(116, 3);
             saveAsButton.Name = "saveAsButton";
-            saveAsButton.Size = new Size(152, 23);
+            saveAsButton.Size = new Size(134, 23);
             saveAsButton.TabIndex = 20;
-            saveAsButton.Text = "Сохранить список как...";
+            saveAsButton.Text = "Сохранить как...";
             saveAsButton.UseVisualStyleBackColor = true;
             saveAsButton.Click += saveAsButton_Click;
             // 
@@ -304,11 +305,22 @@
             openFileDialog1.CheckPathExists = false;
             openFileDialog1.FileName = "openFileDialog1";
             // 
+            // loadButton
+            // 
+            loadButton.Location = new Point(256, 3);
+            loadButton.Name = "loadButton";
+            loadButton.Size = new Size(98, 23);
+            loadButton.TabIndex = 22;
+            loadButton.Text = "Открыть";
+            loadButton.UseVisualStyleBackColor = true;
+            loadButton.Click += loadButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(loadButton);
             Controls.Add(label1);
             Controls.Add(saveAsButton);
             Controls.Add(filterButton);
@@ -368,5 +380,6 @@
         private Button saveAsButton;
         private Label label1;
         private OpenFileDialog openFileDialog1;
+        private Button loadButton;
     }
 }

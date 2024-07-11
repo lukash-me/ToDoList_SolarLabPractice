@@ -1,5 +1,6 @@
 ﻿using Base;
 using Infrastructure;
+using System.Threading.Tasks;
 
 namespace TaskListData
 {
@@ -19,23 +20,25 @@ namespace TaskListData
             return task;
         }
         
-        public Tasks toTasks()
+        public List<Tasks> toTasks(List<string> strList)
         {
-            DataProvider provider = new DataProvider();
-            string str = provider.loadData();
-
-            Tasks task = new Tasks();
-            string[] splitted = str.Split(",");
-
-            task.id = Convert.ToInt32(splitted[0]);
-            task.name = splitted[1];
-            task.tag = splitted[2];
-            task.priority = splitted[3];
-            task.status = splitted[4];
-            task.duration = Convert.ToDouble(splitted[5]);
-            task.deadline = Convert.ToDateTime(splitted[6]);
-
-            return task;
+            
+            List<Tasks> list = new List<Tasks>();
+            string[] taskStr;
+            foreach (string str in strList)
+            {
+                Tasks task = new Tasks();
+                taskStr = str.Split(",");
+                task.id = Convert.ToInt32(taskStr[0]);
+                task.name = taskStr[1];
+                task.tag = taskStr[2];
+                task.priority = taskStr[3];
+                task.status = taskStr[4];
+                task.duration = Convert.ToDouble(taskStr[5]);
+                task.deadline = Convert.ToDateTime(taskStr[6]);
+                list.Add(task);
+            }
+            return list;
         }
 
         public void addToTasksList(List<Tasks> list, decimal id, string name, string tag, string priority, string duration, string deadline, string hours, string mins)

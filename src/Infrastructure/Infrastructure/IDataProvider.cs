@@ -5,6 +5,6 @@ namespace Infrastructure
     public interface IDataProvider
     {
         void saveData(List<string> strList);
-        string loadData();
+        List<string> loadData();
     }
 }
