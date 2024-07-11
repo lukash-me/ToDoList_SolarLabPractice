@@ -29,7 +29,7 @@ namespace UserInterface
 
         private void saveTaskButton_Click(object sender, EventArgs e)
         {
-            de.editTask(de.searchTask(list, Convert.ToInt32(taskEditIdTextBox.Text)),
+            de.editTask(DataProcessing.searchTask(list, Convert.ToInt32(taskEditIdTextBox.Text)),
                                         taskEditIdTextBox.Text,
                                         taskEditNameTextBox.Text,
                                         taskEditTagTextBox.Text,

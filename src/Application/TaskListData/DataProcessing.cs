@@ -6,8 +6,6 @@ namespace TaskListData
     {
         public static void statusFilter(List<Tasks> list, List<string[]> filteredList, string choice)
         {
-            //List<string[]> filteredList;
-
             switch (choice)
             {
                 case "Все":
@@ -43,6 +41,18 @@ namespace TaskListData
             string str = $"{task.id},{task.name},{task.tag},{task.priority},{task.status},{task.duration},{task.deadline}";
 
             return str.Split(",");
+        }
+
+        public static Tasks searchTask(List<Tasks> list, int id)
+        {
+            foreach (Tasks task in list)
+            {
+                if (task.id == Convert.ToInt32(id))
+                {
+                    return task;
+                }
+            }
+            return null;
         }
     }
 }

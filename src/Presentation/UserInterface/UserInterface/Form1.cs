@@ -1,7 +1,4 @@
 using Base;
-using Microsoft.VisualBasic;
-using System.Data;
-using System.Windows.Forms;
 using TaskListData;
 
 namespace UserInterface
@@ -28,26 +25,7 @@ namespace UserInterface
                         taskHoursComboBox.Text,
                         taskMinsComboBox.Text);
             actualIdcomboBox.Items.Add(taskIdUpDown.Value);
-            tasksListRefresh();
-        }
-
-        //Это нужно заменить на listPresentation
-        public void tasksListRefresh()
-        {
-            TasksListView.Items.Clear();
-
-            foreach (Tasks task in list)
-            {
-                string[] str = DataProcessing.taskToString(task);
-                ListViewItem item = new ListViewItem(str[0]);
-
-                for (int i = 1; i < 7; i++)
-                {
-                    item.SubItems.Add(str[i]);
-                }
-
-                TasksListView.Items.Add(item);
-            }
+            listPresentation(filterComboBox.Text);
         }
 
         public void listPresentation(string filter)
@@ -70,19 +48,19 @@ namespace UserInterface
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             TasksListView.Items.Clear();
-            tasksListRefresh();
+            listPresentation(filterComboBox.Text);
         }
 
         private void startTaskButton_Click(object sender, EventArgs e)
         {
             de.statusChanging(list, Convert.ToInt32(actualIdcomboBox.Text), 1);
-            tasksListRefresh();
+            listPresentation(filterComboBox.Text);
         }
 
         private void completeTaskButton_Click(object sender, EventArgs e)
         {
             de.statusChanging(list, Convert.ToInt32(actualIdcomboBox.Text), 2);
-            tasksListRefresh();
+            listPresentation(filterComboBox.Text);
         }
         private void editTaskButton_Click(object sender, EventArgs e)
         {
@@ -92,10 +70,10 @@ namespace UserInterface
 
             try
             {
-                string[] texts = DataProcessing.taskToString(de.searchTask(list, Convert.ToInt32(actualIdcomboBox.Text)));
+                string[] texts = DataProcessing.taskToString(DataProcessing.searchTask(list, Convert.ToInt32(actualIdcomboBox.Text)));
                 taskEditingForm.setTexts(texts[0], texts[1], texts[2], texts[3], texts[5], texts[6].Split(" ")[0], texts[6].Split(" ")[1].Split(":")[0], texts[6].Split(" ")[1].Split(":")[1]);
                 taskEditingForm.ShowDialog();
-                tasksListRefresh();
+                listPresentation(filterComboBox.Text);
             }
             catch (SystemException)
             {
@@ -114,7 +92,7 @@ namespace UserInterface
             de.deleteFromTaskList(list, Convert.ToInt32(actualIdcomboBox.Text));
             actualIdcomboBox.Items.Remove(Convert.ToDecimal(actualIdcomboBox.Text));
             actualIdcomboBox.Text = string.Empty;
-            tasksListRefresh();
+            listPresentation(filterComboBox.Text);
         }
 
         private void filterButton_Click(object sender, EventArgs e)

@@ -1,8 +1,5 @@
 ﻿using Base;
 using Infrastructure;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 
 namespace TaskListData
 {
@@ -49,7 +46,7 @@ namespace TaskListData
 
         public void deleteFromTaskList(List<Tasks> list, int id)
         {
-            list.Remove(searchTask(list, id));
+            list.Remove(DataProcessing.searchTask(list, id));
         }
 
         public void editTask(Tasks task, string id, string name, string tag, string priority, string duration, string deadline, string hours, string mins)
@@ -71,24 +68,14 @@ namespace TaskListData
                 case 0:
                     break;
                 case 1:
-                    searchTask(list, id).status = "В работе";
+                    DataProcessing.searchTask(list, id).status = "В работе";
                     break;
                 case 2:
-                    searchTask(list, id).status = "Выполнено";
+                    DataProcessing.searchTask(list, id).status = "Выполнено";
                     break;
             }
         }
-        public Tasks searchTask(List<Tasks> list, int id)
-        {
-            foreach (Tasks task in list)
-            {
-                if (task.id == Convert.ToInt32(id))
-                {
-                    return task;
-                }
-            }
-            return null;
-        }
+        
 
         
     }
