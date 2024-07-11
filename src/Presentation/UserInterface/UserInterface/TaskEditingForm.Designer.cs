@@ -102,9 +102,11 @@
             // 
             // saveTaskButton
             // 
-            saveTaskButton.Location = new Point(200, 92);
+            saveTaskButton.BackgroundImage = Properties.Resources.ButtonColor;
+            saveTaskButton.FlatStyle = FlatStyle.Flat;
+            saveTaskButton.Location = new Point(200, 101);
             saveTaskButton.Name = "saveTaskButton";
-            saveTaskButton.Size = new Size(354, 23);
+            saveTaskButton.Size = new Size(354, 40);
             saveTaskButton.TabIndex = 13;
             saveTaskButton.Text = "Сохранить изменения";
             saveTaskButton.UseVisualStyleBackColor = true;
@@ -112,9 +114,11 @@
             // 
             // cancelButton
             // 
-            cancelButton.Location = new Point(200, 121);
+            cancelButton.BackgroundImage = Properties.Resources.ButtonColor;
+            cancelButton.FlatStyle = FlatStyle.Flat;
+            cancelButton.Location = new Point(200, 147);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(354, 23);
+            cancelButton.Size = new Size(354, 39);
             cancelButton.TabIndex = 13;
             cancelButton.Text = "Отменить";
             cancelButton.UseVisualStyleBackColor = true;
@@ -122,6 +126,7 @@
             // 
             // taskEditIdTextBox
             // 
+            taskEditIdTextBox.Enabled = false;
             taskEditIdTextBox.Location = new Point(12, 62);
             taskEditIdTextBox.Name = "taskEditIdTextBox";
             taskEditIdTextBox.Size = new Size(67, 23);
@@ -131,6 +136,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Azure;
             ClientSize = new Size(750, 225);
             Controls.Add(taskEditIdTextBox);
             Controls.Add(taskEditHoursComboBox);

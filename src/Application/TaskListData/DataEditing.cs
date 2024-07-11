@@ -1,19 +1,20 @@
 ﻿using Base;
+using Infrastructure.TaskExceptions;
 
 namespace TaskListData
 {
     public class DataEditing
     {
-        public Tasks toTasks(decimal id, string name, string tag, string priority, string duration, string deadline, string hours, string mins)
+        public Tasks toTasks(int id, string name, string tag, string priority, int duration, DateTime deadline)
         {
             Tasks task = new Tasks();
-            task.id = Convert.ToInt32(id);
+            task.id = id;
             task.name = name;
             task.tag = tag;
             task.priority = priority;
             task.status = "В ожидании";
-            task.duration = Convert.ToDouble(duration);
-            task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00"); //если mins, hours = null?
+            task.duration = duration;
+            task.deadline = deadline; 
 
             return task;
         }
@@ -39,10 +40,10 @@ namespace TaskListData
             return list;
         }
 
-        public void addToTasksList(List<Tasks> list, decimal id, string name, string tag, string priority, string duration, string deadline, string hours, string mins)
+        public void addToTasksList(List<Tasks> list, int id, string name, string tag, string priority, int duration, DateTime deadline)
         {
 
-            list.Add(toTasks(id, name, tag, priority, duration, deadline, hours, mins));
+            list.Add(toTasks(id, name, tag, priority, duration, deadline));
         }
 
         public void deleteFromTaskList(List<Tasks> list, int id)

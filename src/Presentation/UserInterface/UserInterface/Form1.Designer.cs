@@ -134,7 +134,7 @@
             taskDeadlineDateBox.Size = new Size(75, 23);
             taskDeadlineDateBox.TabIndex = 6;
             taskDeadlineDateBox.TabStop = false;
-            taskDeadlineDateBox.Value = new DateTime(2024, 7, 10, 0, 0, 0, 0);
+            taskDeadlineDateBox.Value = new DateTime(2024, 7, 12, 0, 0, 0, 0);
             // 
             // TasksListView
             // 
@@ -191,9 +191,11 @@
             // taskIdUpDown
             // 
             taskIdUpDown.Location = new Point(12, 73);
+            taskIdUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             taskIdUpDown.Name = "taskIdUpDown";
             taskIdUpDown.Size = new Size(67, 23);
             taskIdUpDown.TabIndex = 10;
+            taskIdUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // taskMinsComboBox
             // 
@@ -228,11 +230,14 @@
             // actualIdcomboBox
             // 
             actualIdcomboBox.BackColor = Color.PaleTurquoise;
+            actualIdcomboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             actualIdcomboBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             actualIdcomboBox.FormattingEnabled = true;
+            actualIdcomboBox.ImeMode = ImeMode.NoControl;
             actualIdcomboBox.Location = new Point(12, 175);
             actualIdcomboBox.Name = "actualIdcomboBox";
             actualIdcomboBox.Size = new Size(98, 33);
+            actualIdcomboBox.Sorted = true;
             actualIdcomboBox.TabIndex = 12;
             // 
             // completeTaskButton
@@ -283,13 +288,13 @@
             // 
             // filterComboBox
             // 
+            filterComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             filterComboBox.FormattingEnabled = true;
             filterComboBox.Items.AddRange(new object[] { "Все", "Выполненные", "В работе", "В ожидании" });
             filterComboBox.Location = new Point(595, 232);
             filterComboBox.Name = "filterComboBox";
             filterComboBox.Size = new Size(87, 23);
             filterComboBox.TabIndex = 18;
-            filterComboBox.Text = "Все";
             // 
             // filterButton
             // 
@@ -338,18 +343,18 @@
             nameLabel.AutoSize = true;
             nameLabel.Location = new Point(99, 55);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(59, 15);
+            nameLabel.Size = new Size(64, 15);
             nameLabel.TabIndex = 23;
-            nameLabel.Text = "Название";
+            nameLabel.Text = "Название*";
             // 
             // idLabel
             // 
             idLabel.AutoSize = true;
             idLabel.Location = new Point(12, 55);
             idLabel.Name = "idLabel";
-            idLabel.Size = new Size(45, 15);
+            idLabel.Size = new Size(50, 15);
             idLabel.TabIndex = 23;
-            idLabel.Text = "Номер";
+            idLabel.Text = "Номер*";
             // 
             // tagLabel
             // 

@@ -1,6 +1,5 @@
 using Base;
 using Infrastructure;
-using System.Runtime.InteropServices;
 using TaskListData;
 
 namespace UserInterface
@@ -16,20 +15,24 @@ namespace UserInterface
         public Form1()
         {
             InitializeComponent();
+            editButtonsUnable();
+            filterComboBox.Text = "Все";
+            taskDeadlineDateBox.Value = DateTime.Now;
         }
 
         private void addTaskButton_Click(object sender, EventArgs e)
         {
-            de.addToTasksList(list, taskIdUpDown.Value,
+            de.addToTasksList(list, Convert.ToInt32(taskIdUpDown.Value),
                         taskNameTextBox.Text,
                         taskTagTextBox.Text,
                         TaskPriorityComboBox.Text,
-                        taskDurationTextBox.Text,
-                        taskDeadlineDateBox.Value.ToShortDateString(),
-                        taskHoursComboBox.Text,
-                        taskMinsComboBox.Text);
+                        Convert.ToInt32(taskDurationTextBox.Text),
+                        Convert.ToDateTime($"{taskDeadlineDateBox.Value.ToShortDateString()} {taskHoursComboBox.Text}:{taskMinsComboBox.Text}:00")
+                        );
             actualIdcomboBox.Items.Add(taskIdUpDown.Value);
             listPresentation(filterComboBox.Text);
+            editButtonsAble();
+            actualIdcomboBox.Text = (taskIdUpDown.Value).ToString();
         }
 
         public void listPresentation(string filter)
@@ -91,6 +94,25 @@ namespace UserInterface
             actualIdcomboBox.Items.Remove(Convert.ToDecimal(actualIdcomboBox.Text));
             actualIdcomboBox.Text = string.Empty;
             listPresentation(filterComboBox.Text);
+            if (actualIdcomboBox.Items.Count == 0) editButtonsUnable();
+        }
+
+        private void editButtonsUnable()
+        {
+            actualIdcomboBox.Enabled = false;
+            startTaskButton.Enabled = false;
+            completeTaskButton.Enabled = false;
+            editTaskButton.Enabled = false;
+            deleteTaskButton.Enabled = false;
+        }
+
+        private void editButtonsAble()
+        {
+            actualIdcomboBox.Enabled = true;
+            startTaskButton.Enabled = true;
+            completeTaskButton.Enabled = true;
+            editTaskButton.Enabled = true;
+            deleteTaskButton.Enabled = true;
         }
 
         private void filterButton_Click(object sender, EventArgs e)
@@ -130,9 +152,16 @@ namespace UserInterface
 
             List<string> tasksListStr = provider.loadData();
             list = de.toTasks(tasksListStr);
+            List<int> numbers = DataProcessing.TaskListNumbers(list);
+            foreach(int num in numbers)
+            {
+                actualIdcomboBox.Items.Add(num);
+            }
+            actualIdcomboBox.Text = (numbers[0]).ToString();
 
             filterComboBox.Text = "Все";
             listPresentation(filterComboBox.Text);
+            editButtonsAble();
         }
     }
 }

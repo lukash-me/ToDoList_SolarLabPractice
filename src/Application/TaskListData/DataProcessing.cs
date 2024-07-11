@@ -62,5 +62,13 @@ namespace TaskListData
             }
             return null;
         }
+
+        public static List<int> TaskListNumbers(List<Tasks> list)
+        {
+            List<int> result = new List<int>();
+            foreach (Tasks task in list)
+                result.Add(task.id);
+            return result;
+        }
     }
 }
