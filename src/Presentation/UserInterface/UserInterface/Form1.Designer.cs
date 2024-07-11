@@ -55,17 +55,28 @@
             filterComboBox = new ComboBox();
             filterButton = new Button();
             saveAsButton = new Button();
-            label1 = new Label();
             openFileDialog1 = new OpenFileDialog();
             loadButton = new Button();
+            nameLabel = new Label();
+            idLabel = new Label();
+            tagLabel = new Label();
+            priorityLabel = new Label();
+            durationLabel = new Label();
+            dateLabel = new Label();
+            labelHours = new Label();
+            minsLabel = new Label();
+            filterLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)taskIdUpDown).BeginInit();
             SuspendLayout();
             // 
             // addTaskButton
             // 
-            addTaskButton.Location = new Point(208, 102);
+            addTaskButton.BackgroundImage = Properties.Resources.ButtonColor;
+            addTaskButton.FlatStyle = FlatStyle.Flat;
+            addTaskButton.ForeColor = Color.Black;
+            addTaskButton.Location = new Point(205, 102);
             addTaskButton.Name = "addTaskButton";
-            addTaskButton.Size = new Size(354, 23);
+            addTaskButton.Size = new Size(368, 30);
             addTaskButton.TabIndex = 0;
             addTaskButton.Text = "Добавить задачу";
             addTaskButton.UseVisualStyleBackColor = true;
@@ -73,6 +84,8 @@
             // 
             // saveButton
             // 
+            saveButton.BackgroundImage = Properties.Resources.ButtonColor;
+            saveButton.FlatStyle = FlatStyle.Flat;
             saveButton.Location = new Point(9, 3);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(101, 23);
@@ -108,17 +121,17 @@
             // 
             taskDurationTextBox.Location = new Point(438, 73);
             taskDurationTextBox.Name = "taskDurationTextBox";
-            taskDurationTextBox.Size = new Size(100, 23);
+            taskDurationTextBox.Size = new Size(135, 23);
             taskDurationTextBox.TabIndex = 5;
             // 
             // taskDeadlineDateBox
             // 
             taskDeadlineDateBox.CustomFormat = "";
             taskDeadlineDateBox.Format = DateTimePickerFormat.Short;
-            taskDeadlineDateBox.Location = new Point(553, 73);
+            taskDeadlineDateBox.Location = new Point(593, 73);
             taskDeadlineDateBox.MinDate = new DateTime(2024, 7, 10, 0, 0, 0, 0);
             taskDeadlineDateBox.Name = "taskDeadlineDateBox";
-            taskDeadlineDateBox.Size = new Size(89, 23);
+            taskDeadlineDateBox.Size = new Size(75, 23);
             taskDeadlineDateBox.TabIndex = 6;
             taskDeadlineDateBox.TabStop = false;
             taskDeadlineDateBox.Value = new DateTime(2024, 7, 10, 0, 0, 0, 0);
@@ -186,7 +199,7 @@
             // 
             taskMinsComboBox.FormattingEnabled = true;
             taskMinsComboBox.Items.AddRange(new object[] { "1", "2", "4", "5", "6", "7", "8", "9", "10" });
-            taskMinsComboBox.Location = new Point(705, 72);
+            taskMinsComboBox.Location = new Point(718, 73);
             taskMinsComboBox.Name = "taskMinsComboBox";
             taskMinsComboBox.Size = new Size(38, 23);
             taskMinsComboBox.TabIndex = 12;
@@ -195,24 +208,26 @@
             // 
             taskHoursComboBox.FormattingEnabled = true;
             taskHoursComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" });
-            taskHoursComboBox.Location = new Point(661, 72);
+            taskHoursComboBox.Location = new Point(674, 73);
             taskHoursComboBox.Name = "taskHoursComboBox";
             taskHoursComboBox.Size = new Size(38, 23);
             taskHoursComboBox.TabIndex = 12;
             // 
             // startTaskButton
             // 
+            startTaskButton.BackColor = Color.PaleTurquoise;
+            startTaskButton.FlatStyle = FlatStyle.Flat;
             startTaskButton.Location = new Point(127, 167);
             startTaskButton.Name = "startTaskButton";
             startTaskButton.Size = new Size(97, 52);
             startTaskButton.TabIndex = 13;
             startTaskButton.Text = "Приступить к выполнению";
-            startTaskButton.UseVisualStyleBackColor = true;
+            startTaskButton.UseVisualStyleBackColor = false;
             startTaskButton.Click += startTaskButton_Click;
             // 
             // actualIdcomboBox
             // 
-            actualIdcomboBox.FlatStyle = FlatStyle.Flat;
+            actualIdcomboBox.BackColor = Color.PaleTurquoise;
             actualIdcomboBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             actualIdcomboBox.FormattingEnabled = true;
             actualIdcomboBox.Location = new Point(12, 175);
@@ -222,41 +237,47 @@
             // 
             // completeTaskButton
             // 
+            completeTaskButton.BackColor = Color.PaleTurquoise;
+            completeTaskButton.FlatStyle = FlatStyle.Flat;
             completeTaskButton.Location = new Point(230, 167);
             completeTaskButton.Name = "completeTaskButton";
             completeTaskButton.Size = new Size(108, 52);
             completeTaskButton.TabIndex = 14;
             completeTaskButton.Text = "Пометить выполненной";
-            completeTaskButton.UseVisualStyleBackColor = true;
+            completeTaskButton.UseVisualStyleBackColor = false;
             completeTaskButton.Click += completeTaskButton_Click;
             // 
             // editTaskButton
             // 
+            editTaskButton.BackColor = Color.PaleTurquoise;
+            editTaskButton.FlatStyle = FlatStyle.Flat;
             editTaskButton.Location = new Point(344, 167);
             editTaskButton.Name = "editTaskButton";
             editTaskButton.Size = new Size(108, 52);
             editTaskButton.TabIndex = 15;
             editTaskButton.Text = "Редактировать";
-            editTaskButton.UseVisualStyleBackColor = true;
+            editTaskButton.UseVisualStyleBackColor = false;
             editTaskButton.Click += editTaskButton_Click;
             // 
             // deleteTaskButton
             // 
+            deleteTaskButton.BackColor = Color.PaleTurquoise;
+            deleteTaskButton.FlatStyle = FlatStyle.Flat;
             deleteTaskButton.Location = new Point(458, 167);
             deleteTaskButton.Name = "deleteTaskButton";
             deleteTaskButton.Size = new Size(101, 52);
             deleteTaskButton.TabIndex = 16;
             deleteTaskButton.Text = "Удалить";
-            deleteTaskButton.UseVisualStyleBackColor = true;
+            deleteTaskButton.UseVisualStyleBackColor = false;
             deleteTaskButton.Click += deleteTaskButton_Click;
             // 
             // idToEdit
             // 
             idToEdit.AutoSize = true;
-            idToEdit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            idToEdit.Location = new Point(9, 146);
+            idToEdit.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            idToEdit.Location = new Point(12, 157);
             idToEdit.Name = "idToEdit";
-            idToEdit.Size = new Size(58, 21);
+            idToEdit.Size = new Size(45, 15);
             idToEdit.TabIndex = 17;
             idToEdit.Text = "Номер";
             // 
@@ -272,6 +293,8 @@
             // 
             // filterButton
             // 
+            filterButton.BackgroundImage = Properties.Resources.ButtonColor;
+            filterButton.FlatStyle = FlatStyle.Flat;
             filterButton.Location = new Point(688, 232);
             filterButton.Name = "filterButton";
             filterButton.Size = new Size(100, 23);
@@ -282,6 +305,8 @@
             // 
             // saveAsButton
             // 
+            saveAsButton.BackgroundImage = Properties.Resources.ButtonColor;
+            saveAsButton.FlatStyle = FlatStyle.Flat;
             saveAsButton.Location = new Point(116, 3);
             saveAsButton.Name = "saveAsButton";
             saveAsButton.Size = new Size(134, 23);
@@ -289,15 +314,6 @@
             saveAsButton.Text = "Сохранить как...";
             saveAsButton.UseVisualStyleBackColor = true;
             saveAsButton.Click += saveAsButton_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(256, 136);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 21;
-            label1.Text = "label1";
             // 
             // openFileDialog1
             // 
@@ -307,6 +323,8 @@
             // 
             // loadButton
             // 
+            loadButton.BackgroundImage = Properties.Resources.ButtonColor;
+            loadButton.FlatStyle = FlatStyle.Flat;
             loadButton.Location = new Point(256, 3);
             loadButton.Name = "loadButton";
             loadButton.Size = new Size(98, 23);
@@ -315,16 +333,107 @@
             loadButton.UseVisualStyleBackColor = true;
             loadButton.Click += loadButton_Click;
             // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new Point(99, 55);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(59, 15);
+            nameLabel.TabIndex = 23;
+            nameLabel.Text = "Название";
+            // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Location = new Point(12, 55);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new Size(45, 15);
+            idLabel.TabIndex = 23;
+            idLabel.Text = "Номер";
+            // 
+            // tagLabel
+            // 
+            tagLabel.AutoSize = true;
+            tagLabel.Location = new Point(205, 55);
+            tagLabel.Name = "tagLabel";
+            tagLabel.Size = new Size(24, 15);
+            tagLabel.TabIndex = 23;
+            tagLabel.Text = "Тег";
+            // 
+            // priorityLabel
+            // 
+            priorityLabel.AutoSize = true;
+            priorityLabel.Location = new Point(311, 55);
+            priorityLabel.Name = "priorityLabel";
+            priorityLabel.Size = new Size(67, 15);
+            priorityLabel.TabIndex = 23;
+            priorityLabel.Text = "Приоритет";
+            // 
+            // durationLabel
+            // 
+            durationLabel.AutoSize = true;
+            durationLabel.Location = new Point(438, 55);
+            durationLabel.Name = "durationLabel";
+            durationLabel.Size = new Size(135, 15);
+            durationLabel.TabIndex = 23;
+            durationLabel.Text = "Длительность (в часах)";
+            // 
+            // dateLabel
+            // 
+            dateLabel.AutoSize = true;
+            dateLabel.Location = new Point(593, 55);
+            dateLabel.Name = "dateLabel";
+            dateLabel.Size = new Size(32, 15);
+            dateLabel.TabIndex = 23;
+            dateLabel.Text = "Дата";
+            // 
+            // labelHours
+            // 
+            labelHours.AutoSize = true;
+            labelHours.Location = new Point(674, 55);
+            labelHours.Name = "labelHours";
+            labelHours.Size = new Size(36, 15);
+            labelHours.TabIndex = 23;
+            labelHours.Text = "Часы";
+            // 
+            // minsLabel
+            // 
+            minsLabel.AutoSize = true;
+            minsLabel.Location = new Point(716, 55);
+            minsLabel.Name = "minsLabel";
+            minsLabel.Size = new Size(52, 15);
+            minsLabel.TabIndex = 23;
+            minsLabel.Text = "Минуты";
+            // 
+            // filterLabel
+            // 
+            filterLabel.AutoSize = true;
+            filterLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            filterLabel.Location = new Point(593, 214);
+            filterLabel.Name = "filterLabel";
+            filterLabel.Size = new Size(51, 15);
+            filterLabel.TabIndex = 17;
+            filterLabel.Text = "Фильтр:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Azure;
             ClientSize = new Size(800, 450);
+            Controls.Add(idLabel);
+            Controls.Add(minsLabel);
+            Controls.Add(labelHours);
+            Controls.Add(dateLabel);
+            Controls.Add(durationLabel);
+            Controls.Add(priorityLabel);
+            Controls.Add(tagLabel);
+            Controls.Add(nameLabel);
             Controls.Add(loadButton);
-            Controls.Add(label1);
             Controls.Add(saveAsButton);
             Controls.Add(filterButton);
             Controls.Add(filterComboBox);
+            Controls.Add(filterLabel);
             Controls.Add(idToEdit);
             Controls.Add(deleteTaskButton);
             Controls.Add(editTaskButton);
@@ -378,8 +487,16 @@
         private ComboBox filterComboBox;
         private Button filterButton;
         private Button saveAsButton;
-        private Label label1;
         private OpenFileDialog openFileDialog1;
         private Button loadButton;
+        private Label nameLabel;
+        private Label idLabel;
+        private Label tagLabel;
+        private Label priorityLabel;
+        private Label durationLabel;
+        private Label dateLabel;
+        private Label labelHours;
+        private Label minsLabel;
+        private Label filterLabel;
     }
 }

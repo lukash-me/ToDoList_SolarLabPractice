@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.IO;
-using Base;
-
-namespace Infrastructure
+﻿namespace Infrastructure
 {
     /// <summary>
     /// Передача данных в/из файла
@@ -32,7 +27,6 @@ namespace Infrastructure
             }
             return strList;
         }
-
 
         public void saveData(List<string> strList)
         {

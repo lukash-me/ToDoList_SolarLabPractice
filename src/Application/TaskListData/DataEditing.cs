@@ -1,6 +1,4 @@
 ﻿using Base;
-using Infrastructure;
-using System.Threading.Tasks;
 
 namespace TaskListData
 {
@@ -61,8 +59,6 @@ namespace TaskListData
             task.duration = Convert.ToDouble(duration);
             task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00"); //если mins, hours = null?
         }
-
-        
 
         public void statusChanging(List<Tasks> list, int id, int changing)
         {

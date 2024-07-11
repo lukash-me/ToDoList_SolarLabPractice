@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C75280F3-C05D-46FC-890A-1992C02A56A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "Presentation\UserInterface\UserInterface\UserInterface.csproj", "{9C909124-FF0B-4C0A-BCD6-AECC2C0DAF35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserInterface", "Presentation\UserInterface\UserInterface\UserInterface.csproj", "{9C909124-FF0B-4C0A-BCD6-AECC2C0DAF35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
