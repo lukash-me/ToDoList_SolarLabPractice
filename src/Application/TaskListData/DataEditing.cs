@@ -51,14 +51,14 @@ namespace TaskListData
             list.Remove(DataProcessing.searchTask(list, id));
         }
 
-        public void editTask(Tasks task, string id, string name, string tag, string priority, string duration, string deadline, string hours, string mins)
+        public void editTask(Tasks task, int id, string name, string tag, string priority, int duration, DateTime deadline)
         {
-            task.id = Convert.ToInt32(id);
+            task.id = id;
             task.name = name;
             task.tag = tag;
             task.priority = priority;
-            task.duration = Convert.ToDouble(duration);
-            task.deadline = Convert.ToDateTime($"{deadline} {hours}:{mins}:00"); //если mins, hours = null?
+            task.duration = duration;
+            task.deadline = deadline;
         }
 
         public void statusChanging(List<Tasks> list, int id, int changing)

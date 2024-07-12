@@ -96,8 +96,9 @@
             // 
             // TaskPriorityComboBox
             // 
+            TaskPriorityComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             TaskPriorityComboBox.FormattingEnabled = true;
-            TaskPriorityComboBox.Items.AddRange(new object[] { "Низкий", "Средний", "Высокий", "Срочно" });
+            TaskPriorityComboBox.Items.AddRange(new object[] { "", "Низкий", "Средний", "Высокий", "Срочно" });
             TaskPriorityComboBox.Location = new Point(311, 73);
             TaskPriorityComboBox.Name = "TaskPriorityComboBox";
             TaskPriorityComboBox.Size = new Size(121, 23);
@@ -140,9 +141,9 @@
             // 
             TasksListView.Columns.AddRange(new ColumnHeader[] { idTasksListView, nameTasksListView, tagTasksListView, priorityTasksListView, statusTasksListView, durationTasksListView, deadlineTasksListView });
             TasksListView.GridLines = true;
-            TasksListView.Location = new Point(12, 261);
+            TasksListView.Location = new Point(0, 273);
             TasksListView.Name = "TasksListView";
-            TasksListView.Size = new Size(776, 177);
+            TasksListView.Size = new Size(800, 177);
             TasksListView.TabIndex = 9;
             TasksListView.UseCompatibleStateImageBehavior = false;
             TasksListView.View = View.Details;
@@ -191,6 +192,7 @@
             // taskIdUpDown
             // 
             taskIdUpDown.Location = new Point(12, 73);
+            taskIdUpDown.Maximum = new decimal(new int[] { 101, 0, 0, 0 });
             taskIdUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             taskIdUpDown.Name = "taskIdUpDown";
             taskIdUpDown.Size = new Size(67, 23);
@@ -199,8 +201,9 @@
             // 
             // taskMinsComboBox
             // 
+            taskMinsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             taskMinsComboBox.FormattingEnabled = true;
-            taskMinsComboBox.Items.AddRange(new object[] { "1", "2", "4", "5", "6", "7", "8", "9", "10" });
+            taskMinsComboBox.Items.AddRange(new object[] { "0", "1", "2", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21 ", "22 ", "23 ", "24 ", "25 ", "26 ", "27 ", "28 ", "29 ", "30 ", "31 ", "32 ", "33 ", "34 ", "35 ", "36 ", "37 ", "38 ", "39 ", "40 ", "41 ", "42 ", "43 ", "44 ", "45 ", "46 ", "47 ", "48 ", "49 ", "50 ", "51 ", "52 ", "53 ", "54 ", "55 ", "56 ", "57 ", "58 ", "59" });
             taskMinsComboBox.Location = new Point(718, 73);
             taskMinsComboBox.Name = "taskMinsComboBox";
             taskMinsComboBox.Size = new Size(38, 23);
@@ -208,8 +211,9 @@
             // 
             // taskHoursComboBox
             // 
+            taskHoursComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             taskHoursComboBox.FormattingEnabled = true;
-            taskHoursComboBox.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" });
+            taskHoursComboBox.Items.AddRange(new object[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" });
             taskHoursComboBox.Location = new Point(674, 73);
             taskHoursComboBox.Name = "taskHoursComboBox";
             taskHoursComboBox.Size = new Size(38, 23);
@@ -343,18 +347,18 @@
             nameLabel.AutoSize = true;
             nameLabel.Location = new Point(99, 55);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(64, 15);
+            nameLabel.Size = new Size(59, 15);
             nameLabel.TabIndex = 23;
-            nameLabel.Text = "Название*";
+            nameLabel.Text = "Название";
             // 
             // idLabel
             // 
             idLabel.AutoSize = true;
-            idLabel.Location = new Point(12, 55);
+            idLabel.Location = new Point(9, 55);
             idLabel.Name = "idLabel";
-            idLabel.Size = new Size(50, 15);
+            idLabel.Size = new Size(45, 15);
             idLabel.TabIndex = 23;
-            idLabel.Text = "Номер*";
+            idLabel.Text = "Номер";
             // 
             // tagLabel
             // 

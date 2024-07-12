@@ -9,30 +9,77 @@ namespace UserInterface
         List<Tasks> list = new List<Tasks>();
         DataEditing de = new DataEditing();
         DataProvider provider = new DataProvider();
-
-        bool userAlert = false;
-        int[] userAlertArr = [10]; //0 - idAdd, 1 - nameAdd, 2 - tagAdd, 3 - durationAdd, 4 - hoursAdd, 5 - minAdd, 6 - idEdit, 7 - startEdit, 8 - doneEdit, 9 - editEdit 10 - deleteEdit
         public Form1()
         {
             InitializeComponent();
             editButtonsUnable();
             filterComboBox.Text = "Все";
             taskDeadlineDateBox.Value = DateTime.Now;
+            taskHoursComboBox.Text = "0";
+            taskMinsComboBox.Text = "0";
         }
 
         private void addTaskButton_Click(object sender, EventArgs e)
         {
-            de.addToTasksList(list, Convert.ToInt32(taskIdUpDown.Value),
+            if (actualIdcomboBox.Items.Contains(Convert.ToInt32(taskIdUpDown.Value)))
+            {
+                idLabel.Location = new Point(9, 40);
+                idLabel.Text = "Неуникальный\nномер";
+                idLabel.ForeColor = Color.Red;
+                return;
+            }
+            if (taskIdUpDown.Value > 100)
+            {
+                idLabel.Location = new Point(9, 40);
+                idLabel.Text = "Номер до\nста";
+                idLabel.ForeColor = Color.Red;
+                return;
+            }
+
+            if (taskDurationTextBox.Text == string.Empty) taskDurationTextBox.Text = "0";
+            
+                try
+            {
+                de.addToTasksList(list, Convert.ToInt32(taskIdUpDown.Value),
                         taskNameTextBox.Text,
                         taskTagTextBox.Text,
                         TaskPriorityComboBox.Text,
                         Convert.ToInt32(taskDurationTextBox.Text),
                         Convert.ToDateTime($"{taskDeadlineDateBox.Value.ToShortDateString()} {taskHoursComboBox.Text}:{taskMinsComboBox.Text}:00")
                         );
-            actualIdcomboBox.Items.Add(taskIdUpDown.Value);
-            listPresentation(filterComboBox.Text);
-            editButtonsAble();
-            actualIdcomboBox.Text = (taskIdUpDown.Value).ToString();
+                actualIdcomboBox.Items.Add(Convert.ToInt32(taskIdUpDown.Value));
+                listPresentation(filterComboBox.Text);
+                editButtonsAble();
+                labelsRefresh();
+                TextBoxesRefresh();
+                actualIdcomboBox.Text = list.ElementAt<Tasks>(0).id.ToString();
+                taskIdUpDown.Value++;
+            }
+            catch (FormatException)
+            {
+                durationLabel.Text = "Введите целое число";
+                durationLabel.ForeColor = Color.Red;
+            }
+        }
+
+        public void labelsRefresh()
+        {
+            idLabel.Location = new Point(9, 55);
+            idLabel.Text = "Номер*";
+            idLabel.ForeColor = Color.Black;
+            durationLabel.Text = "Длительность (в часах)";
+            durationLabel.ForeColor = Color.Black;
+        }
+
+        public void TextBoxesRefresh()
+        {
+            taskNameTextBox.Text = string.Empty;
+            taskTagTextBox.Text = string.Empty;
+            TaskPriorityComboBox.Text = string.Empty;
+            taskDurationTextBox.Text = string.Empty;
+            taskDeadlineDateBox.Value = DateTime.Now;
+            taskHoursComboBox.Text = "0";
+            taskMinsComboBox.Text = "0";
         }
 
         public void listPresentation(string filter)
@@ -65,36 +112,27 @@ namespace UserInterface
         }
         private void editTaskButton_Click(object sender, EventArgs e)
         {
-            //if (userAlert) checkAlerts(userAlert);
-
             TaskEditingForm taskEditingForm = new TaskEditingForm(de, list);
 
-            try
-            {
-                string[] texts = DataProcessing.taskToString(DataProcessing.searchTask(list, Convert.ToInt32(actualIdcomboBox.Text)));
-                taskEditingForm.setTexts(texts[0], texts[1], texts[2], texts[3], texts[5], texts[6].Split(" ")[0], texts[6].Split(" ")[1].Split(":")[0], texts[6].Split(" ")[1].Split(":")[1]);
-                taskEditingForm.ShowDialog();
-                listPresentation(filterComboBox.Text);
-            }
-            catch (SystemException)
-            {
-                idToEdit.Text = "Введите номер";
-                idToEdit.ForeColor = Color.FromArgb(255, 0, 0);
-                actualIdcomboBox.BackColor = Color.FromArgb(250, 128, 114);
-
-                userAlertArr[6] = 1;
-                userAlertArr[9] = 1;
-                userAlert = true;
-            }
+            string[] texts = DataProcessing.taskToString(DataProcessing.searchTask(list, Convert.ToInt32(actualIdcomboBox.Text)));
+            taskEditingForm.setTexts(texts[0], texts[1], texts[2], texts[3], texts[5], texts[6].Split(" ")[0], texts[6].Split(" ")[1].Split(":")[0], texts[6].Split(" ")[1].Split(":")[1]);
+            taskEditingForm.ShowDialog();
+            listPresentation(filterComboBox.Text);
         }
 
         private void deleteTaskButton_Click(object sender, EventArgs e)
         {
             de.deleteFromTaskList(list, Convert.ToInt32(actualIdcomboBox.Text));
-            actualIdcomboBox.Items.Remove(Convert.ToDecimal(actualIdcomboBox.Text));
+            actualIdcomboBox.Items.Remove(Convert.ToInt32(actualIdcomboBox.Text));
             actualIdcomboBox.Text = string.Empty;
             listPresentation(filterComboBox.Text);
-            if (actualIdcomboBox.Items.Count == 0) editButtonsUnable();
+            if (actualIdcomboBox.Items.Count == 0)
+            {
+                editButtonsUnable();
+                taskIdUpDown.Value = 1;
+                return;
+            }
+            actualIdcomboBox.Text = list.ElementAt<Tasks>(0).id.ToString();
         }
 
         private void editButtonsUnable()

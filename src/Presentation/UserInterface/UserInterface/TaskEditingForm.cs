@@ -12,6 +12,9 @@ namespace UserInterface
             InitializeComponent();
             this.de = de;
             this.list = list;
+            taskEditDeadlineDateBox.Value = DateTime.Now;
+            taskEditHoursComboBox.Text = "0";
+            taskEditMinsComboBox.Text = "0";
         }
 
         public void setTexts(string id, string name, string tag, string priority, string duration, string date, string hours, string mins)
@@ -29,17 +32,24 @@ namespace UserInterface
 
         private void saveTaskButton_Click(object sender, EventArgs e)
         {
-            de.editTask(DataProcessing.searchTask(list, Convert.ToInt32(taskEditIdTextBox.Text)),
-                                        taskEditIdTextBox.Text,
-                                        taskEditNameTextBox.Text,
-                                        taskEditTagTextBox.Text,
-                                        taskEditPriorityComboBox.Text,
-                                        taskEditDurationTextBox.Text,
-                                        taskEditDeadlineDateBox.Text,
-                                        taskEditHoursComboBox.Text,
-                                        taskEditMinsComboBox.Text
-            );
-            Close();
+            if (taskEditDurationTextBox.Text == string.Empty) taskEditDurationTextBox.Text = "0";
+            try
+            {
+                de.editTask(DataProcessing.searchTask(list, Convert.ToInt32(taskEditIdTextBox.Text)),
+                        Convert.ToInt32(taskEditIdTextBox.Text),
+                        taskEditNameTextBox.Text,
+                        taskEditTagTextBox.Text,
+                        taskEditPriorityComboBox.Text,
+                        Convert.ToInt32(taskEditDurationTextBox.Text),
+                        Convert.ToDateTime($"{taskEditDeadlineDateBox.Value.ToShortDateString()} {taskEditHoursComboBox.Text}:{taskEditMinsComboBox.Text}:00")
+                        );
+                Close();
+            }
+            catch (FormatException)
+            {
+                durationLabel.Text = "Введите целое число";
+                durationLabel.ForeColor = Color.Red;
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
