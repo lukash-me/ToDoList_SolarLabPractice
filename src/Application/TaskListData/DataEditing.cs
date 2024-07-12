@@ -1,10 +1,19 @@
 ﻿using Base;
-using Infrastructure.TaskExceptions;
 
 namespace TaskListData
 {
     public class DataEditing
     {
+        /// <summary>
+        /// Создание экземпляра Tasks из получаемых данных.
+        /// </summary>
+        /// <param name="id">Номер.</param>
+        /// <param name="name">Название.</param>
+        /// <param name="tag">Тег.</param>
+        /// <param name="priority">Приоритет.</param>
+        /// <param name="duration">Длительность.</param>
+        /// <param name="deadline">Срок выполнения.</param>
+        /// <returns>Экземпляр Tasks</returns>
         public Tasks toTasks(int id, string name, string tag, string priority, int duration, DateTime deadline)
         {
             Tasks task = new Tasks();
@@ -18,7 +27,12 @@ namespace TaskListData
 
             return task;
         }
-        
+
+        /// <summary>
+        /// Преобразование списка строк с информацией о задачах в список экземаляров класса Tasks.
+        /// </summary>
+        /// <param name="strList">Список задач в строковом формате</param>
+        /// <returns>Список экземпляров Tasks</returns>
         public List<Tasks> toTasks(List<string> strList)
         {
             
@@ -40,17 +54,41 @@ namespace TaskListData
             return list;
         }
 
+        /// <summary>
+        /// Добавление задачи в список задач.
+        /// </summary>
+        /// <param name="list">Список задач.</param>
+        /// <param name="id">Номер.</param>
+        /// <param name="name">Название.</param>
+        /// <param name="tag">Тег.</param>
+        /// <param name="priority">Приоритет.</param>
+        /// <param name="duration">Длительность.</param>
+        /// <param name="deadline">Срок выполнения.</param>
         public void addToTasksList(List<Tasks> list, int id, string name, string tag, string priority, int duration, DateTime deadline)
         {
-
             list.Add(toTasks(id, name, tag, priority, duration, deadline));
         }
 
+        /// <summary>
+        /// Удаление задачи из списка задач.
+        /// </summary>
+        /// <param name="list">Список задач.</param>
+        /// <param name="id">Номер.</param>
         public void deleteFromTaskList(List<Tasks> list, int id)
         {
             list.Remove(DataProcessing.searchTask(list, id));
         }
 
+        /// <summary>
+        /// Изменение задачи.
+        /// </summary>
+        /// <param name="task"></param>
+        /// <param name="id">Номер.</param>
+        /// <param name="name">Название.</param>
+        /// <param name="tag">Тег.</param>
+        /// <param name="priority">Приоритет.</param>
+        /// <param name="duration">Длительность.</param>
+        /// <param name="deadline">Срок выполнения.</param>
         public void editTask(Tasks task, int id, string name, string tag, string priority, int duration, DateTime deadline)
         {
             task.id = id;
@@ -60,7 +98,13 @@ namespace TaskListData
             task.duration = duration;
             task.deadline = deadline;
         }
-
+        
+        /// <summary>
+        /// Изменение статуса задачи.
+        /// </summary>
+        /// <param name="list">Список задач.</param>
+        /// <param name="id">Номер.</param>
+        /// <param name="changing">Номер желаемого изменения статуса.</param>
         public void statusChanging(List<Tasks> list, int id, int changing)
         {
             switch (changing)

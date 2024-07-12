@@ -9,12 +9,19 @@
         private string path = Directory.GetCurrentDirectory()
                 + @"\..\..\..\..\..\..\Domain\Data\ToDoList.txt";
 
+        /// <summary>
+        /// Путь к файлу.
+        /// </summary>
         public string Path
         {
             get { return path; }
             set { path = value; userPath = true; }
         }
 
+        /// <summary>
+        /// Загрузка данных из файла.
+        /// </summary>
+        /// <returns>Строковый список задач.</returns>
         public List<string> loadData()
         {
             List<string> strList = new List<string>();
@@ -28,6 +35,10 @@
             return strList;
         }
 
+        /// <summary>
+        /// Сохранение данных в файл.
+        /// </summary>
+        /// <param name="strList">Строковый список задач.</param>
         public void saveData(List<string> strList)
         {
             if(userPath == false)
